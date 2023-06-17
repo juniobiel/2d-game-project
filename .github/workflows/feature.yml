@@ -62,7 +62,7 @@ jobs:
           unityVersion: ${{ env.unityVersion }}
           targetPlatform: ${{ env.targetPlatform }}
           allowDirtyBuild: true
-          versioning: Semantic
+          versioning: androidVersionCode
           androidAppBundle: false
           androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
