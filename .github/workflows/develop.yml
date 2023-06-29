@@ -15,7 +15,7 @@ jobs:
         projectPath:
           - src/
         unityVersion:
-          - auto
+          - 2022.3.3f1
         targetPlatform:
           - Android # Build an Android player.
     steps:
@@ -75,7 +75,7 @@ jobs:
         projectPath:
           - src/
         unityVersion:
-          - auto
+          - 2022.3.3f1
         targetPlatform:
           - WebGL #Build an WebGL player.
           - Android # Build an Android player.
