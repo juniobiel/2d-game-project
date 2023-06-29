@@ -128,7 +128,7 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: false
-          versioning: None
+          versioning: Tag
           versionCode: androidVersionCode
           androidAppBundle: false
           androidKeystoreName: user.keystore
