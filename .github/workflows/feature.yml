@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - apps/
+          - src/
         unityVersion:
           - auto
         targetPlatform:
