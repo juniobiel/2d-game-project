@@ -7,12 +7,17 @@ on:
 
 jobs:
   build:
-    name: Build for Android
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
-    env:
-      projectPath: src/
-      unityVersion: 2021.3.16f1
-      targetPlatform: Android # Build an Android player.
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - apps/
+        unityVersion:
+          - 2022.3.3f1
+        targetPlatform:
+          - Android # Build an Android player.
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
@@ -41,13 +46,13 @@ jobs:
       # Cache
       - uses: actions/cache@v3.2.2
         with:
-          path: ${{ env.projectPath }}/Library
+          path: ${{ matrix.projectPath }}/Library
           key:
-            Library-${{ env.projectPath }}-${{ env.targetPlatform }}-${{
-            hashFiles(env.projectPath) }}
+            Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-${{
+            hashFiles(matrix.projectPath) }}
           restore-keys: |
-            Library-${{ env.projectPath }}-${{ env.targetPlatform }}-
-            Library-${{ env.projectPath }}-
+            Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-
+            Library-${{ matrix.projectPath }}-
             Library-
 
       # Build
@@ -58,12 +63,11 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          projectPath: ${{ env.projectPath }}
-          unityVersion: ${{ env.unityVersion }}
-          targetPlatform: ${{ env.targetPlatform }}
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: true
-          versioning: Tag
-          versionCode: androidVersionCode
+          versioning: Semantic
           androidAppBundle: false
           androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -89,9 +93,6 @@ jobs:
         with:
           destination_branch: "develop"
           pr_title: "Pulling ${{ github.ref }} into develop"
-          pr_body: |
-            :crown: *Automated PR to develop*
-
   
           
 
