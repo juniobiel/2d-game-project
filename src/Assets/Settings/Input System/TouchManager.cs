@@ -16,8 +16,8 @@ namespace Assets.Settings.InputSystem
         public delegate void TouchPressedEvent( Vector2 position );
         public event TouchPressedEvent OnTouchPressed;
 
-        public delegate void TouchEndedEvent( Vector2 position );
-        public event TouchEndedEvent OnTouchEnded;
+        public delegate void TouchReleasedEvent( Vector2 position );
+        public event TouchReleasedEvent OnTouchReleased;
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace Assets.Settings.InputSystem
 
         private void OnDisable()
         {
-            _touchPositionAction.canceled -= TouchPressed;
+            _touchPositionAction.canceled -= TouchReleased;
         }
 
         private void TouchPressed( InputAction.CallbackContext context )
@@ -44,11 +44,11 @@ namespace Assets.Settings.InputSystem
             }
         }
 
-        private void TouchEnded( InputAction.CallbackContext context )
+        private void TouchReleased(InputAction.CallbackContext context )
         {
-            if (OnTouchEnded != null)
+            if (OnTouchReleased != null)
             {
-                OnTouchEnded(context.ReadValue<Vector2>());
+                OnTouchReleased(context.ReadValue<Vector2>());
             }
         }
     }

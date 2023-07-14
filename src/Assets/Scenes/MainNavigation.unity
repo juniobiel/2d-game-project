@@ -276,6 +276,51 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &722836085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 722836087}
+  - component: {fileID: 722836086}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &722836086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722836085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c558183f6a6da4fa91a668260af25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedLevelObject: {fileID: 0}
+--- !u!4 &722836087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722836085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04501921, y: -0.28845248, z: 0.6275063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &746480747
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,8 +573,8 @@ GameObject:
   - component: {fileID: 1554711115}
   - component: {fileID: 1554711116}
   m_Layer: 0
-  m_Name: SecondLevelPoint
-  m_TagString: Orb
+  m_Name: LevelPointTwo
+  m_TagString: LevelPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,8 +587,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554711112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: 0.169, z: 0}
-  m_LocalScale: {x: 0.10161386, y: 0.06207512, z: 0.1787}
+  m_LocalPosition: {x: -0.193, y: 0.206, z: 0}
+  m_LocalScale: {x: 0.10161386, y: 0.06207512, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020493674}
@@ -613,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb0401a733b32a48b5e7aa53dc6798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelInformation: {fileID: 11400000, guid: aee4fada7d657b0498ba2f29b812c973, type: 2}
 --- !u!65 &1554711116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -647,8 +693,8 @@ GameObject:
   - component: {fileID: 1581587829}
   - component: {fileID: 1581587830}
   m_Layer: 0
-  m_Name: FirstLevelPoint
-  m_TagString: Orb
+  m_Name: LevelPointOne
+  m_TagString: LevelPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -660,9 +706,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581587826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.283, y: -0.132, z: 0}
-  m_LocalScale: {x: 0.10161386, y: 0.06207512, z: 0.1787}
+  m_LocalScale: {x: 0.10161386, y: 0.06207512, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020493674}
@@ -732,6 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb0401a733b32a48b5e7aa53dc6798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelInformation: {fileID: 11400000, guid: 3e4c8dc560bf3704fab983ee9ab1527d, type: 2}
 --- !u!65 &1581587830
 BoxCollider:
   m_ObjectHideFlags: 0

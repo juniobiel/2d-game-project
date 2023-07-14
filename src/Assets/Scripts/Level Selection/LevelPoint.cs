@@ -1,12 +1,17 @@
 using Assets.Settings.InputSystem;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.LevelSelection
 {
     public class LevelPoint : MonoBehaviour
     {
+        public static event Action<GameObject> OnLevelPointSelected;
+        
         private TouchManager _touchManager;
         private Camera _mainCamera;
+
+        public ScriptableObject LevelInformation;
 
         private void Awake()
         {
@@ -16,38 +21,49 @@ namespace Assets.Scripts.LevelSelection
 
         private void OnEnable()
         {
-            _touchManager.OnTouchPressed += Move;
+            _touchManager.OnTouchPressed += TouchPressedLevelPoint;
         }
 
         private void OnDisable()
         {
-            _touchManager.OnTouchEnded -= Move;
+            _touchManager.OnTouchReleased -= TouchReleasedLevelPoint;
         }
 
-        public void Move( Vector2 screenPosition )
+        private void TouchPressedLevelPoint( Vector2 screenPosition )
         {
-            Vector3 screenCoordinates = new Vector3(screenPosition.x, screenPosition.y, 0);
+            Vector3 screenCoordinates = new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane);
             Vector2 worldCoordinates = _mainCamera.ScreenToWorldPoint(screenCoordinates);
 
+            Ray ray = _mainCamera.ScreenPointToRay(screenCoordinates);
+            RaycastHit hit;
+            
+            //Use this to debug touch tap
+            //Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow, 100f);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "LevelPoint")
+                {
+                    OnLevelPointSelected(hit.transform.gameObject);
+                }
+            }
+        }
+
+        private void TouchReleasedLevelPoint(Vector2 screenPosition)
+        {
+            Vector3 screenCoordinates = new Vector3(screenPosition.x, screenPosition.y, _mainCamera.nearClipPlane);
+            Vector2 worldCoordinates = _mainCamera.ScreenToWorldPoint(screenCoordinates);
 
             Ray ray = _mainCamera.ScreenPointToRay(screenCoordinates);
             RaycastHit hit;
 
-            Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow, 100f);
-
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.tag == "Orb")
+                if (hit.transform.tag == "LevelPoint")
                 {
-                    Destroy(hit.transform.gameObject);
+                    Debug.Log("Can create a new interaction when the player release the touch point");
                 }
             }
-
-
-            //Debug.Log($"Posicao do objeto no transform Antes:{transform.position}, {transform.localPosition}, {transform.localToWorldMatrix}");
-            //transform.position = worldCoordinates;
-            //Debug.Log($"Posicao do objeto no transform Depois:{transform.position}, {worldCoordinates}");
-
         }
     }
 }
