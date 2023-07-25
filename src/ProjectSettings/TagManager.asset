@@ -49,3 +49,9 @@ TagManager:
   - name: Characters
     uniqueID: 2552155727
     locked: 0
+  - name: Tree Top
+    uniqueID: 2815249171
+    locked: 0
+  - name: Level Point
+    uniqueID: 796154195
+    locked: 0
