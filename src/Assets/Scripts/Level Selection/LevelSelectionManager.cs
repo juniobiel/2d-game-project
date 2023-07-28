@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Helpers;
 using Assets.Scripts.LevelSelection;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Level_Selection
@@ -11,33 +10,41 @@ namespace Assets.Scripts.Level_Selection
         [SerializeField]
         private GameObject SelectedLevelObject;
 
+        /// <summary>
+        /// Subscribing on event that is raised when the touch is colliding with level point selection
+        /// </summary>
         private void OnEnable()
         {
             LevelPoint.OnLevelPointSelected += SelectLevelPoint;
         }
 
-        //private void OnDisable()
-        //{
-        //    LevelPoint.OnLevelPointSelected -= SelectLevelPoint;
-        //}
-
+        /// <summary>
+        /// Used to direct the event when the level was pressed
+        /// </summary>
+        /// <param name="levelPoint">The object that player has select</param>
         private void SelectLevelPoint(GameObject levelPoint)
         {
-            levelPoint.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            var levelIconSelected = levelPoint.GetComponent<LevelPoint>().LevelInformation.LevelIconSelected;
 
-            if(SelectedLevelObject == null)
+            levelPoint.gameObject.GetComponent<SpriteRenderer>().sprite = levelIconSelected;
+
+            if (SelectedLevelObject == null)
                 SelectedLevelObject = levelPoint;
-            
 
+            DeselecionarLevelAnterior(levelPoint);
+        }
+
+        private void DeselecionarLevelAnterior( GameObject levelPoint )
+        {
             var levelPointId = levelPoint.GetComponent<LevelPoint>().LevelInformation.GetInstanceID();
             var selectedLevelId = SelectedLevelObject.GetComponent<LevelPoint>().LevelInformation.GetInstanceID();
 
             if (!levelPointId.Equals(selectedLevelId))
             {
-                SelectedLevelObject.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                var levelUnselectedIcon = SelectedLevelObject.GetComponent<LevelPoint>().LevelInformation.LevelIcon;
+                SelectedLevelObject.gameObject.GetComponent<SpriteRenderer>().sprite = levelUnselectedIcon;
                 SelectedLevelObject = levelPoint;
             }
-
         }
     }
 }

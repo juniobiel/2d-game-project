@@ -8,5 +8,9 @@ namespace Assets.Scripts.Level_Selection
     {
         public Guid LevelId = Guid.NewGuid();
         public int LevelIndex;
+        public Sprite LevelIcon;
+        public Sprite LevelIconSelected;
+        public Sprite LevelIconCompleted;
+        public bool IsLevelCompleted = false;
     }
 }

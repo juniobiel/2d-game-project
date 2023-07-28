@@ -1462,9 +1462,11 @@ GameObject:
   - component: {fileID: 243824271}
   - component: {fileID: 243824273}
   - component: {fileID: 243824272}
+  - component: {fileID: 243824275}
+  - component: {fileID: 243824274}
   m_Layer: 0
   m_Name: Level03_0
-  m_TagString: Untagged
+  m_TagString: LevelPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1492,7 +1494,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243824270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 875bdbd562003104fae3f05ee08a6a12, type: 2}
   m_CullingMode: 0
@@ -1557,6 +1559,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &243824274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243824270}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.94814813, y: 1.4814814, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &243824275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243824270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb0401a733b32a48b5e7aa53dc6798a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelInformation: {fileID: 11400000, guid: 5d68c393ca3fb1646a724a40c3e1b87a, type: 2}
 --- !u!1 &256305051
 GameObject:
   m_ObjectHideFlags: 0
@@ -8281,9 +8317,11 @@ GameObject:
   - component: {fileID: 1540269886}
   - component: {fileID: 1540269888}
   - component: {fileID: 1540269887}
+  - component: {fileID: 1540269890}
+  - component: {fileID: 1540269891}
   m_Layer: 0
   m_Name: Level01_0
-  m_TagString: Untagged
+  m_TagString: LevelPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8311,7 +8349,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540269885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e1b5fdee1ac794e47ac6ad7cf26d7b76, type: 2}
   m_CullingMode: 0
@@ -8364,7 +8402,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 796154195
   m_SortingLayer: 3
-  m_SortingOrder: 17
+  m_SortingOrder: 0
   m_Sprite: {fileID: 494941681, guid: 6eda9675364b07944948ff2d4b09a83a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8376,6 +8414,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1540269890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540269885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb0401a733b32a48b5e7aa53dc6798a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelInformation: {fileID: 11400000, guid: 3e4c8dc560bf3704fab983ee9ab1527d, type: 2}
+--- !u!65 &1540269891
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540269885}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.024, y: 1.6, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1554711112
 GameObject:
   m_ObjectHideFlags: 0
@@ -9453,9 +9525,11 @@ GameObject:
   - component: {fileID: 1674794801}
   - component: {fileID: 1674794803}
   - component: {fileID: 1674794802}
+  - component: {fileID: 1674794805}
+  - component: {fileID: 1674794804}
   m_Layer: 0
   m_Name: Level02_0
-  m_TagString: Untagged
+  m_TagString: LevelPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9483,7 +9557,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674794800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9e0dd2200ae5cbb45be31d9167a47ca9, type: 2}
   m_CullingMode: 0
@@ -9548,6 +9622,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1674794804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674794800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.024, y: 1.6, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1674794805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674794800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb0401a733b32a48b5e7aa53dc6798a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelInformation: {fileID: 11400000, guid: aee4fada7d657b0498ba2f29b812c973, type: 2}
 --- !u!1 &1690845365
 GameObject:
   m_ObjectHideFlags: 0
@@ -9646,8 +9754,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.0199001, y: 0.42895004, z: 0}
-    m_Extent: {x: 1.6945, y: 0.95645, z: 0}
+    m_Center: {x: 1.0267501, y: 0.43809998, z: 0}
+    m_Extent: {x: 1.68535, y: 0.9655, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
