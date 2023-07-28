@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: LevelOne
   m_EditorClassIdentifier: 
   LevelIndex: 1
+  LevelIcon: {fileID: 494941681, guid: 6eda9675364b07944948ff2d4b09a83a, type: 3}
+  LevelIconSelected: {fileID: -292764015, guid: 6eda9675364b07944948ff2d4b09a83a, type: 3}
+  LevelIconCompleted: {fileID: -363896155, guid: 6eda9675364b07944948ff2d4b09a83a, type: 3}
+  IsLevelCompleted: 0
