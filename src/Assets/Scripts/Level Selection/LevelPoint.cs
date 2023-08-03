@@ -11,6 +11,7 @@ namespace Assets.Scripts.LevelSelection
         /// this creating the Event when the point is selected
         /// </summary>
         public static event Action<GameObject> OnLevelPointSelected;
+        public static event Action<bool> ActiveButtonPlay;
         
         private TouchManager _touchManager;
         private Camera _mainCamera;
@@ -55,9 +56,11 @@ namespace Assets.Scripts.LevelSelection
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.tag == "LevelPoint")
+                if (hit.transform.tag.Equals("LevelPoint"))
                 {
                     OnLevelPointSelected(hit.transform.gameObject);
+
+                    ActiveButtonPlay(true);
                 }
             }
         }

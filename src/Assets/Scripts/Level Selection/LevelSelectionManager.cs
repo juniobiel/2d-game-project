@@ -18,6 +18,8 @@ namespace Assets.Scripts.Level_Selection
             LevelPoint.OnLevelPointSelected += SelectLevelPoint;
         }
 
+        #region SELECTION LEVEL POINT
+
         /// <summary>
         /// Used to direct the event when the level was pressed
         /// </summary>
@@ -31,10 +33,10 @@ namespace Assets.Scripts.Level_Selection
             if (SelectedLevelObject == null)
                 SelectedLevelObject = levelPoint;
 
-            DeselecionarLevelAnterior(levelPoint);
+            DeselectPreviousPoint(levelPoint);
         }
 
-        private void DeselecionarLevelAnterior( GameObject levelPoint )
+        private void DeselectPreviousPoint( GameObject levelPoint )
         {
             var levelPointId = levelPoint.GetComponent<LevelPoint>().LevelInformation.GetInstanceID();
             var selectedLevelId = SelectedLevelObject.GetComponent<LevelPoint>().LevelInformation.GetInstanceID();
@@ -46,5 +48,7 @@ namespace Assets.Scripts.Level_Selection
                 SelectedLevelObject = levelPoint;
             }
         }
+
+        #endregion
     }
 }
