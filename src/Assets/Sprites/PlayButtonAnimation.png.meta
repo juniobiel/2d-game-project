@@ -145,17 +145,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_0"
+      name: PlayButtonAnimation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9452646ffc7404e4185a99592ba8aa33
-      internalID: -621492571
+      spriteID: 15a5d983d49d28f41b8015e4c3823346
+      internalID: 693113617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_1"
+      name: PlayButtonAnimation_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 54
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32fbfc82016ecc14eacb503964100b96
-      internalID: 609770823
+      spriteID: 106f0add75e335e4691da2a03a3e92f8
+      internalID: -2070437609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_2"
+      name: PlayButtonAnimation_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 108
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf48007746b46914f9ca63bfd34d1b14
-      internalID: -565938026
+      spriteID: 0670c296e142ffa44ba3d11c6fde7711
+      internalID: -979823396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_3"
+      name: PlayButtonAnimation_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 162
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b1fab6026b17a4da0a7910606df5e7
-      internalID: 210295290
+      spriteID: 794ce2b8e7bd2cb47831b41a52df68cd
+      internalID: 1700040059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_4"
+      name: PlayButtonAnimation_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 216
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +260,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac0fb0d1277966a4fb6d621c66b98d18
-      internalID: -1278774171
+      spriteID: 51d812117b006a24f8a5044dc69288fa
+      internalID: -1880789503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_5"
+      name: PlayButtonAnimation_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 270
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29606cad2750bbc44be2bff3cd5eafe8
-      internalID: -959572800
+      spriteID: 5910ffea4d0e03849b1e03a785900cbb
+      internalID: -1003646080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_6"
+      name: PlayButtonAnimation_6
       rect:
         serializedVersion: 2
-        x: 384
+        x: 324
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,20 +302,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 699b779b8c30eaa44880a4d005b4cc9c
-      internalID: -1374461374
+      spriteID: 9aa86500ac8cd8b42a802b2037574702
+      internalID: 762083662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Bot\xE3o Jogar Anima\xE7\xE3o_7"
+      name: PlayButtonAnimation_7
       rect:
         serializedVersion: 2
-        x: 448
+        x: 378
         y: 0
-        width: 64
-        height: 64
+        width: 54
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,8 +323,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf7c0d0a44a8db0428484e2c7bb7d4d0
-      internalID: 937074389
+      spriteID: ba5ed1afe3f61f2439b12dafeb9bfa8c
+      internalID: 1717405384
       vertices: []
       indices: 
       edges: []
@@ -327,14 +340,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Bot\xE3o Jogar Anima\xE7\xE3o_0": -621492571
-      "Bot\xE3o Jogar Anima\xE7\xE3o_1": 609770823
-      "Bot\xE3o Jogar Anima\xE7\xE3o_2": -565938026
-      "Bot\xE3o Jogar Anima\xE7\xE3o_3": 210295290
-      "Bot\xE3o Jogar Anima\xE7\xE3o_4": -1278774171
-      "Bot\xE3o Jogar Anima\xE7\xE3o_5": -959572800
-      "Bot\xE3o Jogar Anima\xE7\xE3o_6": -1374461374
-      "Bot\xE3o Jogar Anima\xE7\xE3o_7": 937074389
+      PlayButtonAnimation_0: 693113617
+      PlayButtonAnimation_1: -2070437609
+      PlayButtonAnimation_2: -979823396
+      PlayButtonAnimation_3: 1700040059
+      PlayButtonAnimation_4: -1880789503
+      PlayButtonAnimation_5: -1003646080
+      PlayButtonAnimation_6: 762083662
+      PlayButtonAnimation_7: 1717405384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
