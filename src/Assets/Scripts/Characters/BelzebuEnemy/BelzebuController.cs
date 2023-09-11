@@ -23,8 +23,8 @@ public class BelzebuController : MonoBehaviour
             Debug.Log($"Diff - 1:{transform.position}; 2 - {Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime)}");
             var moveTowards = Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime);
 
-            float positionX = moveTowards.x - transform.position.x;
-            float positionY = moveTowards.y - transform.position.y;
+            float positionX = transform.position.x - moveTowards.x;
+            float positionY = transform.position.y - moveTowards.y;
             Debug.LogError($"{positionX} e {positionY}");
             transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime);
 
