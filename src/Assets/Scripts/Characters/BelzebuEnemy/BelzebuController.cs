@@ -20,7 +20,18 @@ public class BelzebuController : MonoBehaviour
     {
         if(CanMove)
         {
+            Debug.Log($"Diff - 1:{transform.position}; 2 - {Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime)}");
+            var moveTowards = Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime);
+
+            float positionX = moveTowards.x - transform.position.x;
+            float positionY = moveTowards.y - transform.position.y;
+            Debug.LogError($"{positionX} e {positionY}");
             transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime);
+
+            Debug.Log($"Angle - {Vector2.Angle(moveTowards, _playerTransform.position)}");
+            Debug.Log($"Dot - {Vector2.Dot(moveTowards, _playerTransform.position)}");
+            Debug.LogWarning($"Clamp Magnitude - {Vector2.ClampMagnitude(moveTowards, 0.1f)}");
+  
         }
 
     }
