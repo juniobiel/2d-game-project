@@ -6,8 +6,9 @@ public class BelzebuController : MonoBehaviour
 
     [SerializeField]
     private float Speed;
-
     private bool CanMove;
+
+    private Vector2 auxActualPosition;
 
     private void Start()
     {
@@ -18,20 +19,30 @@ public class BelzebuController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        var playerDistance = Vector2.Distance(_playerTransform.position, gameObject.transform.position);
+
+        if(playerDistance > 1.0f && !CanMove) 
+            CanMove = true;
+        
+
         if(CanMove)
         {
-            Debug.Log($"Diff - 1:{transform.position}; 2 - {Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime)}");
+            auxActualPosition = transform.position;
             var moveTowards = Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime);
 
-            float positionX = transform.position.x - moveTowards.x;
-            float positionY = transform.position.y - moveTowards.y;
-            Debug.LogError($"{positionX} e {positionY}");
-            transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position, Speed * Time.deltaTime);
+            transform.position = moveTowards;
 
-            Debug.Log($"Angle - {Vector2.Angle(moveTowards, _playerTransform.position)}");
-            Debug.Log($"Dot - {Vector2.Dot(moveTowards, _playerTransform.position)}");
-            Debug.LogWarning($"Clamp Magnitude - {Vector2.ClampMagnitude(moveTowards, 0.1f)}");
-  
+            float positionX = auxActualPosition.x - transform.position.x;
+            float positionY = auxActualPosition.y - transform.position.y;
+            Debug.LogError($"{positionX} e {positionY}");
+
+            var heading = _playerTransform.position - transform.position;
+            var direction = heading / heading.magnitude;
+
+            //Debug.DrawLine(transform.position, _playerTransform.position, Color.red);
+            Debug.DrawRay(transform.position, direction, Color.red);
+            Debug.LogWarning(direction);
+            //VerifyMovimentAnimation(positionX, positionY, Speed);
         }
 
     }
@@ -40,7 +51,63 @@ public class BelzebuController : MonoBehaviour
     {
         CanMove = false;
 
-        CanMove = true;
+    }
+
+    private void VerifyMovimentAnimation(float positionX, float positionY, float speed)
+    {
+
+        if(speed > 0)
+        {
+            //Right moviments
+            if (positionX > 0 && positionY > 0)
+                AnimationMovimentRightUp();
+
+            if (positionX > 0 && positionY < 0)
+                AnimationMovimentRightDown();
+
+            if (positionX > 0 && positionY == 0)
+                AnimationMovimentRight();
+        }
+    }
+
+    private void AnimationMovimentUp()
+    {
+
+    }
+
+    private void AnimationMovimentDown()
+    {
+
+    }
+
+    private void AnimationMovimentLeft()
+    {
+
+    }
+
+    private void AnimationMovimentRight()
+    {
+
+    }
+
+    private void AnimationMovimentRightUp()
+    {
+
+    }
+
+    private void AnimationMovimentRightDown()
+    {
+
+    }
+
+    private void AnimationMovimentLeftUp()
+    {
+
+    }
+
+    private void AnimationMovimentoLeftDown()
+    {
+
     }
 
 }

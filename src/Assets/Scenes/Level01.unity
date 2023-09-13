@@ -6107,10 +6107,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1622965422}
+  - component: {fileID: 1622965423}
   - component: {fileID: 1622965421}
   - component: {fileID: 1622965420}
   - component: {fileID: 1622965419}
-  - component: {fileID: 1622965423}
   - component: {fileID: 1622965424}
   m_Layer: 0
   m_Name: Belzebu
@@ -6151,7 +6151,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005071163, y: -0.36866945}
+  m_Offset: {x: 0.0007966757, y: -0.0048639476}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6162,7 +6162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34586555, y: 0.15389693}
+  m_Size: {x: 0.69793534, y: 0.88150793}
   m_EdgeRadius: 0
 --- !u!95 &1622965420
 Animator:
@@ -6245,7 +6245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622965418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6218443, y: -0.5653926, z: 0}
+  m_LocalPosition: {x: -8.21, y: 0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6264,7 +6264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f1794d75280df4589a25e810c71e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 0.5
 --- !u!50 &1622965424
 Rigidbody2D:
   serializedVersion: 4
@@ -7099,6 +7099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1924017737}
   - component: {fileID: 1924017736}
+  - component: {fileID: 1924017738}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -7173,6 +7174,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1924017738
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924017735}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1936062764
 GameObject:
   m_ObjectHideFlags: 0
