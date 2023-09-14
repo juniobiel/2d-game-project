@@ -53,6 +53,7 @@ public class BelzebuController : MonoBehaviour
     private void OnCollisionEnter2D( Collision2D collision )
     {
         CanMove = false;
+        SetAnimatorParameters(0, 0);
     }
 
     private void VerifyMovimentAnimation(Vector2 direction, float speed)
