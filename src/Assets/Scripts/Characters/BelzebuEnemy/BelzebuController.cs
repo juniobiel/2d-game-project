@@ -45,8 +45,6 @@ public class BelzebuController : MonoBehaviour
 
             transform.position = moveTowards;
 
-            Debug.LogWarning(direction);
-
             VerifyMovimentAnimation(direction, Speed);
         }
 
