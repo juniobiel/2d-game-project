@@ -13,9 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - apps/
+          - src/
         unityVersion:
-          - 2021.3.16f1
+          - 2022.3.3f1
         targetPlatform:
           - Android # Build an Android player.
     steps:
@@ -73,9 +73,9 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - apps/
+          - src/
         unityVersion:
-          - 2021.3.16f1
+          - 2022.3.3f1
         targetPlatform:
           - WebGL #Build an WebGL player.
           - Android # Build an Android player.
@@ -116,7 +116,6 @@ jobs:
             Library-${{ matrix.projectPath }}-
             Library-
 
-
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v2.1.2
@@ -128,8 +127,9 @@ jobs:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          allowDirtyBuild: true
-          versioning: Semantic
+          allowDirtyBuild: false
+          versioning: Tag
+          versionCode: androidVersionCode
           androidAppBundle: false
           androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -140,12 +140,33 @@ jobs:
       #Output
       - uses: actions/upload-artifact@v3
         with:
-          name: Feature-Build-${{ matrix.targetPlatform}}
+          name: Develop-Build-${{ matrix.targetPlatform}}
           path: build/${{ matrix.targetPlatform}}
           if-no-files-found: ignore
-
-  pullToMain:
-    name: Create pull request to main
+      
+  # Deploy to itch.io
+  deployToItchIo:
+    runs-on: ubuntu-latest
+    name: Deploying Itch.io
+    needs: build
+    environment: Development
+    steps:
+      - uses: actions/download-artifact@v2.0.8
+        with:
+          name: Develop-Build-WebGL
+          path: build/Develop-Build-WebGL
+      - uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{ secrets.BUTLER_API_KEY }}
+          gameData: ./build/Develop-Build-WebGL
+          itchUsername: ${{ secrets.ITCH_USERNAME }}
+          itchGameId: ${{ secrets.ITCH_GAME_ID }}
+          buildChannel: webgl
+          buildNumber: ${{ needs.version.outputs.version_hash }}
+  
+  # Pull To release branch
+  pullToRelease:
+    name: Create pull request to Release
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -157,8 +178,12 @@ jobs:
           lfs: true
 
       # Create pull request
-      - name: Created pull request to main
+      # https://github.com/marketplace/actions/github-pull-request-action
+      - name: Created pull request to release
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "main"
-          pr_title: "Pulling ${{ github.ref }} into main"
+          destination_branch: "release"
+          pr_title: "Pulling ${{ github.ref }} into release"
+          pr_body: |                                        # Full markdown support, requires pr_title to be set
+            :crown: *Automated PR to release branch*
+          

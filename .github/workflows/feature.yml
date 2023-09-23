@@ -13,9 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - apps/
+          - src/
         unityVersion:
-          - 2021.3.16f1
+          - 2022.3.3f1
         targetPlatform:
           - Android # Build an Android player.
     steps:
@@ -67,7 +67,7 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: true
-          versioning: Semantic
+          versioning: None
           androidAppBundle: false
           androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
