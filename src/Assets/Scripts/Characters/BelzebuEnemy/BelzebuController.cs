@@ -12,7 +12,7 @@ public class BelzebuController : MonoBehaviour
     private const float Y_UP = 0.95f;
     private const float Y_DOWN = -0.95f;
 
-    private const float Y_UP_TOLERANCE = 0.03f;
+    private const float Y_UP_TOLERANCE = 0.3f;
     private const float Y_DOWN_TOLERANCE = - 0.3f;
 
     private const float X_RIGHT_TOLERANCE = 0.3f;
