@@ -15,7 +15,7 @@ jobs:
         projectPath:
           - src/
         unityVersion:
-          - 2022.3.10f1
+          - 2022.3.3f1
         targetPlatform:
           - Android # Build an Android player.
     steps:
@@ -63,7 +63,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          customImage: 'editor-ubuntu-2022.3.10f1-android-2' 
+          customImage: 'editor-ubuntu-2022.3.3f1-android-2' 
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: true
