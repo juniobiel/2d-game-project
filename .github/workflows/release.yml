@@ -1,9 +1,11 @@
-name: "[Develop] Unity Actions 😎"
+name: "[Release] Unity Actions 😎"
 
 on: 
   push:
     branches:
-      - 'develop'
+      - 'release'
+      - 'release**'
+      - 'release/**'
 
 jobs:
   build:
@@ -79,13 +81,13 @@ jobs:
       #Output
       - uses: actions/upload-artifact@v3
         with:
-          name: Develop-Build-${{ matrix.targetPlatform}}
+          name: Release-Build-${{ matrix.targetPlatform}}
           path: build/${{ matrix.targetPlatform}}
           if-no-files-found: ignore
-  
-  # Pull To release branch
+
+  # Pull To main branch
   pullToRelease:
-    name: Create pull request to Release
+    name: Create pull request to Main
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -98,71 +100,11 @@ jobs:
 
       # Create pull request
       # https://github.com/marketplace/actions/github-pull-request-action
-      - name: Created pull request to release
+      - name: Created pull request to main
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "release"
-          pr_title: "Pulling ${{ github.ref }} into release"
+          destination_branch: "main"
+          pr_title: "Pulling ${{ github.ref }} into main"
           pr_body: |                                        # Full markdown support, requires pr_title to be set
-            :crown: *Automated PR to release branch*
-          
-
-    # testRunner:
-    # name: Project tests
-    # runs-on: ubuntu-latest
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     projectPath:
-    #       - src/
-    #     unityVersion:
-    #       - 2022.3.3f1
-    #     targetPlatform:
-    #       - Android # Build an Android player.
-    # steps:
-    #   # Checkout (without LFS)
-    #   - name: Checkout repository
-    #     uses: actions/checkout@v2
-    #     with:
-    #       fetch-depth: 0
-    #       lfs: true
-
-    #   # Git LFS
-    #   - name: Create LFS file list
-    #     run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-    #   - name: Restore LFS cache
-    #     uses: actions/cache@v2
-    #     id: lfs-cache
-    #     with:
-    #       path: .git/lfs
-    #       key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-
-    #   - name: Git LFS Pull
-    #     run: |
-    #       git lfs pull
-    #       git add .
-    #       git reset --hard
-
-    #   # Cache
-    #   - uses: actions/cache@v2
-    #     with:
-    #       path: ${{ matrix.projectPath }}/Library
-    #       key:
-    #         Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-${{
-    #         hashFiles(matrix.projectPath) }}
-    #       restore-keys: |
-    #         Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-
-    #         Library-${{ matrix.projectPath }}-
-    #         Library-
-
-    #   #Test
-    #   - name: Run tests
-    #     uses: game-ci/unity-test-runner@v2
-    #     id: testRunner
-    #     env:
-    #       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-    #     with:
-    #       projectPath: ${{ matrix.projectPath }}
-    #       unityVersion: ${{ matrix.unityVersion }}
-    #       githubToken: ${{ secrets.GITHUB_TOKEN }}  
+            :crown: *Automated PR to main branch*
+      
