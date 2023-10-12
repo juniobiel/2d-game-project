@@ -91,7 +91,7 @@ jobs:
           allowDirtyBuild: false
           versioning: Semantic
           androidAppBundle: false
-          androidKeystoreName: user.keystore
+          androidKeystoreName: appStore.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
           androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
