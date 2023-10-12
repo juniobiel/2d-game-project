@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
@@ -64,8 +64,8 @@ jobs:
           customImage: 'unityci/editor:ubuntu-2022.3.9f1-android-2.0.0' 
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          allowDirtyBuild: true
-          versioning: None
+          allowDirtyBuild: false
+          versioning: Tag
           androidAppBundle: false
           androidKeystoreName: appStore.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
