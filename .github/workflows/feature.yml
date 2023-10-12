@@ -16,7 +16,7 @@ jobs:
       with:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
-        tool-cache: true
+        tool-cache: false
         
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
@@ -43,7 +43,7 @@ jobs:
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2.6.0
         with:
           fetch-depth: 0
           lfs: true
@@ -53,7 +53,7 @@ jobs:
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
 
       - name: Restore LFS cache
-        uses: actions/cache@v3
+        uses: actions/cache@v3.2.2
         id: lfs-cache
         with:
           path: .git/lfs
@@ -64,9 +64,8 @@ jobs:
           git lfs pull
           git add .
           git reset --hard
-
       # Cache
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.2.2
         with:
           path: ${{ matrix.projectPath }}/Library
           key:
@@ -76,7 +75,6 @@ jobs:
             Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-
             Library-${{ matrix.projectPath }}-
             Library-
-
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v3
@@ -91,7 +89,7 @@ jobs:
           allowDirtyBuild: true
           versioning: None
           androidAppBundle: false
-          androidKeystoreName: appStore.keystore
+          androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
           androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
@@ -104,7 +102,7 @@ jobs:
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2.6.0
         with:
           fetch-depth: 0
           lfs: true
