@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -19,6 +19,9 @@ jobs:
         targetPlatform:
           - Android # Build an Android player.
     steps:
+      #free-disk
+      - uses: jlumbroso/free-disk-space@v1.3.0
+  
       # Checkout (without LFS)
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -65,7 +68,7 @@ jobs:
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: true
-          versioning: None
+          versioning: Semantic
           androidAppBundle: false
           androidKeystoreName: appStore.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
