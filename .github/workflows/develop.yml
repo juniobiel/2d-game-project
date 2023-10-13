@@ -82,7 +82,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: build-Android
-          path: build-Android
+          path: build/Android
           if-no-files-found: ignore
 
   releaseToGooglePlay:
