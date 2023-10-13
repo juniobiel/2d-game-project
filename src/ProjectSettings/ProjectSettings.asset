@@ -754,8 +754,9 @@ PlayerSettings:
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
+    Android: 0
+  il2cppCompilerConfiguration:
     Android: 1
-  il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
     Bratwurst: 1
