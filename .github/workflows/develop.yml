@@ -124,7 +124,7 @@ jobs:
   pullToRelease:
     name: Create pull request to Release
     runs-on: ubuntu-latest
-    needs: build
+    needs: releaseToGooglePlay
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
