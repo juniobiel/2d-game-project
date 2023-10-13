@@ -70,7 +70,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: false
           versioning: Semantic
-          versionCode: androidVersionCode
+          androidExportType: 'androidAppBundle'
           androidAppBundle: true
           androidKeystoreName: appStore.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -118,7 +118,7 @@ jobs:
         if: always()
         uses: geekyeggo/delete-artifact@v1
         with:
-          name: build-Android
+          name: Internal-Android
   
   # Pull To release branch
   pullToRelease:
