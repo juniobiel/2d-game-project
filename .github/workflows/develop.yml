@@ -15,13 +15,15 @@ jobs:
         projectPath:
           - src/
         unityVersion:
-          - 2022.3.10f1
+          - 2023.1.16f1
         targetPlatform:
           - Android # Build an Android player.
     steps:
+      #free-disk
+      - uses: jlumbroso/free-disk-space@v1.3.0
       # Checkout (without LFS)
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           lfs: true
@@ -31,7 +33,7 @@ jobs:
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
 
       - name: Restore LFS cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: lfs-cache
         with:
           path: .git/lfs
@@ -44,7 +46,7 @@ jobs:
           git reset --hard
 
       # Cache
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ matrix.projectPath }}/Library
           key:
@@ -63,35 +65,71 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          customImage: 'unityci/editor:2022.3.10f1-android-2' 
+          customImage: 'unityci/editor:2023.1.16f1-android-2' 
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: false
-          versioning: Tag
-          versionCode: androidVersionCode
-          androidAppBundle: false
-          androidKeystoreName: user.keystore
+          versioning: Semantic
+          androidExportType: 'androidAppBundle'
+          androidAppBundle: true
+          androidKeystoreName: appStore.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
           androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
-          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }} 
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
+          androidTargetSdkVersion: AndroidApiLevel33 
 
       #Output
       - uses: actions/upload-artifact@v3
         with:
-          name: Develop-Build-${{ matrix.targetPlatform}}
-          path: build/${{ matrix.targetPlatform}}
+          name: Android
+          path: build/Android
           if-no-files-found: ignore
+
+  releaseToGooglePlay:
+    name: Release to the Google Play Store
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      GOOGLE_PLAY_KEY_FILE: ${{ secrets.GOOGLE_PLAY_KEY_FILE }}
+      GOOGLE_PLAY_KEY_FILE_PATH:
+        ${{ format('{0}/fastlane/google-fastlane.json', github.workspace) }}
+      ANDROID_BUILD_FILE_PATH: ${{ format('{0}/build/Android/Android.aab', github.workspace) }}
+      ANDROID_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Download Android Artifact
+        uses: actions/download-artifact@v2.0.8
+        with:
+          name: Android
+          path: build/Android
+      - name: Add Authentication
+        run: echo "$GOOGLE_PLAY_KEY_FILE" > $GOOGLE_PLAY_KEY_FILE_PATH
+      - name: Set up Fastlane
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
+      - name: Upload to Google Play Internal
+        uses: maierj/fastlane-action@v2.0.1
+        with:
+          lane: 'android internal' # Change to upload to a different lane
+      - name: Cleanup to avoid storage limit
+        if: always()
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: Android
   
   # Pull To release branch
   pullToRelease:
     name: Create pull request to Release
     runs-on: ubuntu-latest
-    needs: build
+    needs: releaseToGooglePlay
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
-        uses: actions/checkout@v2.6.0
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           lfs: true
