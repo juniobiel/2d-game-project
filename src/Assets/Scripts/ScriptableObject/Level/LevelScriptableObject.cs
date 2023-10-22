@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Level_Selection
 {
-    [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/CreateLevel", order = 1)]
+    [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level/CreateLevel", order = 1)]
     public class LevelScriptableObject : ScriptableObject
     {
         public Guid LevelId = Guid.NewGuid();
