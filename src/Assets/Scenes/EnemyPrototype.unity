@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -132,16 +129,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 389924175624489892, guid: 924d0e534986aed498e433f4bfef96b3, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 389924175624489892, guid: 924d0e534986aed498e433f4bfef96b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3940446
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 389924175624489892, guid: 924d0e534986aed498e433f4bfef96b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3520138
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 389924175624489892, guid: 924d0e534986aed498e433f4bfef96b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -179,6 +172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Belzebu
       objectReference: {fileID: 0}
+    - target: {fileID: 3425743088882496750, guid: 924d0e534986aed498e433f4bfef96b3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 503471241}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -245,6 +242,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d70879b145d5384e9c554b9977c315e, type: 3}
+--- !u!20 &503471241 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2050408221756469857, guid: 8d70879b145d5384e9c554b9977c315e, type: 3}
+  m_PrefabInstance: {fileID: 503471240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694612791
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,13 +324,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694612791}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.78, y: -2.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1694612794
 BoxCollider2D:
@@ -338,6 +340,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694612791}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -361,7 +364,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,6 +376,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 503471240}
+  - {fileID: 1694612793}
+  - {fileID: 333746661}

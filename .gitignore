@@ -81,3 +81,6 @@ ignore.conf
 
 # Android Keystore
 **.keystore
+
+# VS Code
+.vscode

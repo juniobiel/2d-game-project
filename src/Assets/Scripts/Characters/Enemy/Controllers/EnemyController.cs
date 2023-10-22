@@ -6,6 +6,7 @@ public abstract class EnemyController : MonoBehaviour
 {
     protected Animator _animator;
     protected Transform _playerTransform;
+    protected float Life;
     
     [SerializeField]
     protected float Speed;
@@ -21,6 +22,14 @@ public abstract class EnemyController : MonoBehaviour
 
     protected const float X_RIGHT = 0.95f;
     protected const float X_LEFT = -0.95f;
+
+    protected void VerifyPlayerRange()
+    {
+        if(Vector2.Distance(_playerTransform.position, gameObject.transform.position) <=4)
+        {
+            //Lançar evento para o manager com o inimigo.
+        }
+    }
 
     protected void VerifyMovimentAnimation(Vector2 direction, float speed)
     {
