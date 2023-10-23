@@ -1,4 +1,4 @@
-using Assets.Scripts.Level_Selection;
+using Assets.Scripts.ScriptableObjects.Level;
 using Assets.Settings.InputSystem;
 using System;
 using UnityEngine;

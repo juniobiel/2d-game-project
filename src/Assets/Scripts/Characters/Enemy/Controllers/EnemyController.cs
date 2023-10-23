@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public abstract class EnemyController : MonoBehaviour
 {
+    public static event Action<GameObject> OnPlayerInRange;
+    public static event Action<GameObject> OnPlayerOutRange;
+
     protected Animator _animator;
     protected Transform _playerTransform;
     protected float Life;
@@ -23,12 +25,14 @@ public abstract class EnemyController : MonoBehaviour
     protected const float X_RIGHT = 0.95f;
     protected const float X_LEFT = -0.95f;
 
-    protected void VerifyPlayerRange()
+    protected void VerifyPlayerRange( float playerDistance )
     {
-        if(Vector2.Distance(_playerTransform.position, gameObject.transform.position) <=4)
+        if (playerDistance <= 4)
         {
-            //Lançar evento para o manager com o inimigo.
+            OnPlayerInRange(gameObject);
         }
+
+        OnPlayerOutRange(gameObject);
     }
 
     protected void VerifyMovimentAnimation(Vector2 direction, float speed)
@@ -86,6 +90,8 @@ public abstract class EnemyController : MonoBehaviour
         _animator.SetFloat("Vertical", vertical);
     }
 
+    #region Animation Verifications
+
     protected void AnimationMovimentUp() => SetAnimatorParameters(0, 1);
 
     protected void AnimationMovimentDown() => SetAnimatorParameters(0, -1);
@@ -101,4 +107,6 @@ public abstract class EnemyController : MonoBehaviour
     protected void AnimationMovimentLeftUp() => SetAnimatorParameters(-1, 1);
 
     protected void AnimationMovimentLeftDown() => SetAnimatorParameters(-1, -1);
+
+    #endregion
 }

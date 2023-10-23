@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 public class BelzebuController : EnemyController
 {
     private bool CanMove;
+
+    public static event Action<GameObject> OnPlayerInRange;
+    public static event Action<GameObject> OnPlayerInOutRange;
 
     [SerializeField]
     private EnemyLifeBarHUD _lifeHUD;
@@ -19,8 +23,6 @@ public class BelzebuController : EnemyController
         _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = gameObject.GetComponent<Animator>();
         CanMove = true;
-
-        _lifeHUD.RemoveHealthPoint(62);
     }
 
     void FixedUpdate()
@@ -29,6 +31,11 @@ public class BelzebuController : EnemyController
 
         if(playerDistance > 2.0f && !CanMove) 
             CanMove = true;
+
+        if(CanMove)
+        {
+            VerifyPlayerRange(playerDistance);
+        }
         
         if(CanMove)
         {

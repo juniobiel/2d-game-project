@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Level_Selection
+namespace Assets.Scripts.ScriptableObjects.Level
 {
     [CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/Level/CreateLevel", order = 1)]
     public class LevelScriptableObject : ScriptableObject
