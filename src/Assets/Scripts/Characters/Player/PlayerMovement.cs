@@ -8,7 +8,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigPlayer;
     private Animator animator;
 
-    [SerializeField, Header("Player Attributes")] private float Speed;
+    [SerializeField, Header("Player Attributes")] private float speed;
+    [SerializeField] private float radius;
+
+
 
     [SerializeField, Header("Player Joystick")] private FixedJoystick joystick;
 
@@ -32,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         float _vertical = joystick.Vertical;
 
         Vector2 dir = new(_horizontal, _vertical);
-        _rigPlayer.MovePosition(_rigPlayer.position + Speed * Time.fixedDeltaTime * dir);
+        _rigPlayer.MovePosition(_rigPlayer.position + speed * Time.fixedDeltaTime * dir);
 
         if (_vertical == 0 || _horizontal == 0)
         {
@@ -43,8 +46,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 1);
         }
 
-        VerifyMovimentAnimation(dir, Speed);
+        VerifyMovimentAnimation(dir, speed);
 
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 
     private const float Y_UP = 0.50f;
