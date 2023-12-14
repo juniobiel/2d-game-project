@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - Enemy
   - LevelPoint
+  - InteractableObject
   layers:
   - Default
   - TransparentFX
