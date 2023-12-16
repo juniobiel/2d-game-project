@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5c75bd3d92a68f24aa9102ac54e52df3
+guid: 09063252367d00a4f899ea1ac2b984b9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_0
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_0
       rect:
         serializedVersion: 2
         x: 0
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aade26bd7d439c342a82effeacbfc708
-      internalID: -1905225731
+      spriteID: 9e82f71cdda62164eba68c66d7dc0ea4
+      internalID: 831449379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_1
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_1
       rect:
         serializedVersion: 2
         x: 64
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 839d73064f6552b4eb349690a8a35167
-      internalID: 695641360
+      spriteID: e0006eb46dcc43044b09748996b11ea9
+      internalID: 1946807341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_2
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_2
       rect:
         serializedVersion: 2
         x: 128
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ba8219e92588ac419c360dd90bcda3e
-      internalID: -1009651443
+      spriteID: 2794b01c0a5182d46a540605d6a8f848
+      internalID: -1438546279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_3
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_3
       rect:
         serializedVersion: 2
         x: 192
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aa35c296b0eb794ea9702e5427c67f6
-      internalID: 192113356
+      spriteID: 1bfe113e82c08aa4d98d330130700089
+      internalID: -431660321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_4
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_4
       rect:
         serializedVersion: 2
         x: 256
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3391e7bb439ab614599538289996728e
-      internalID: -636220877
+      spriteID: fa5695ba6f5719c4abe6a2c6a086a11a
+      internalID: -1014284507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_5
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_5
       rect:
         serializedVersion: 2
         x: 320
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 078fc66dd6b0dea4c8ab0a829bf69cb8
-      internalID: 781631368
+      spriteID: 29f6d8a0006f07041a82dd91cb84d71b
+      internalID: -309416485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_6
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_6
       rect:
         serializedVersion: 2
         x: 384
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1490581f13658349909f2596427b8f7
-      internalID: -259435158
+      spriteID: 66b3716ede46cb94ba38ddcf736e727f
+      internalID: -2138264981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_7
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_7
       rect:
         serializedVersion: 2
         x: 448
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12e89d0c62496534889c18ef1c2b8d01
-      internalID: -151049574
+      spriteID: aa1086d8081480b49997daecffa86ba1
+      internalID: 466258104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_8
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_8
       rect:
         serializedVersion: 2
         x: 512
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de2ec579e76d2644f83e48b2d3d0f7d7
-      internalID: -1062214519
+      spriteID: ee68ac9bebb83fb47976ced4a60d15a0
+      internalID: 1689215865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_9
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_9
       rect:
         serializedVersion: 2
         x: 576
@@ -352,14 +352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1780177a6b63c8468bea6bb606fbf39
-      internalID: 919711540
+      spriteID: f723608f18b88a2468c7169b2db63f6e
+      internalID: -273566450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_10
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_10
       rect:
         serializedVersion: 2
         x: 640
@@ -373,14 +373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89ff2df562930f74d9dd6e0485f1ecaa
-      internalID: -2036341241
+      spriteID: ffc2979f33822db48bd679ad04dfc07e
+      internalID: 1776259800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_11
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_11
       rect:
         serializedVersion: 2
         x: 704
@@ -394,14 +394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aff20c023d6349e41aa5487c7d431c9e
-      internalID: 1226259595
+      spriteID: 3bc37fa5c8be41c498b456f727c048c7
+      internalID: -1556534996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_12
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_12
       rect:
         serializedVersion: 2
         x: 768
@@ -415,14 +415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 689c6585a4aea2e4e902e0cc82a48b34
-      internalID: 326357258
+      spriteID: 266bc8ed35a09bc4991636bef596d5c1
+      internalID: -1462151101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_13
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_13
       rect:
         serializedVersion: 2
         x: 832
@@ -436,14 +436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b4ffb25cdbefd04c809583de5bd9618
-      internalID: 263084299
+      spriteID: c6897b391eea37448bfefeb12bd467e6
+      internalID: -945605633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_14
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_14
       rect:
         serializedVersion: 2
         x: 896
@@ -457,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9111ed1c07a25f94daca748ad4f8a7ac
-      internalID: -1168001247
+      spriteID: 212253f4ed1f567448b4acdb1a3f4f54
+      internalID: -1492998399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_15
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_15
       rect:
         serializedVersion: 2
         x: 960
@@ -478,14 +478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93b655393f1ba39429685f85f81c02df
-      internalID: 1382396691
+      spriteID: 2fb5e9f0e32908c40883fe1c322f0a6c
+      internalID: -119825353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_16
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_16
       rect:
         serializedVersion: 2
         x: 1024
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 887110f9f1d7bbb4a8abeab9d4f5b0bc
-      internalID: 552605248
+      spriteID: 424524e8cc5b0794789c64a3cc1bda74
+      internalID: 339010559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_17
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_17
       rect:
         serializedVersion: 2
         x: 1088
@@ -520,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 084f684714de48a4da3365371d31098a
-      internalID: 380985265
+      spriteID: b5ecab3695aac7043a7ee473d98a5b0c
+      internalID: -1046619308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_18
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_18
       rect:
         serializedVersion: 2
         x: 1152
@@ -541,14 +541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66feef6b4cc32d64b86b6540b2523003
-      internalID: -1431062786
+      spriteID: 0488a743d0d01ef41a3aa850f645f2c1
+      internalID: 851374151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Belzubu other 8 directions monster project umbrella_19
+      name: Belzubu 8 directions Horizontal changed monster project umbrella_19
       rect:
         serializedVersion: 2
         x: 1216
@@ -562,8 +562,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 448841cd45fb9064c8822c4ea7bac627
-      internalID: -1770927034
+      spriteID: 5bbf48b615df6c9439329b1d147e2b3f
+      internalID: 1875925398
       vertices: []
       indices: 
       edges: []
@@ -579,26 +579,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Belzubu other 8 directions monster project umbrella_0: -1905225731
-      Belzubu other 8 directions monster project umbrella_1: 695641360
-      Belzubu other 8 directions monster project umbrella_10: -2036341241
-      Belzubu other 8 directions monster project umbrella_11: 1226259595
-      Belzubu other 8 directions monster project umbrella_12: 326357258
-      Belzubu other 8 directions monster project umbrella_13: 263084299
-      Belzubu other 8 directions monster project umbrella_14: -1168001247
-      Belzubu other 8 directions monster project umbrella_15: 1382396691
-      Belzubu other 8 directions monster project umbrella_16: 552605248
-      Belzubu other 8 directions monster project umbrella_17: 380985265
-      Belzubu other 8 directions monster project umbrella_18: -1431062786
-      Belzubu other 8 directions monster project umbrella_19: -1770927034
-      Belzubu other 8 directions monster project umbrella_2: -1009651443
-      Belzubu other 8 directions monster project umbrella_3: 192113356
-      Belzubu other 8 directions monster project umbrella_4: -636220877
-      Belzubu other 8 directions monster project umbrella_5: 781631368
-      Belzubu other 8 directions monster project umbrella_6: -259435158
-      Belzubu other 8 directions monster project umbrella_7: -151049574
-      Belzubu other 8 directions monster project umbrella_8: -1062214519
-      Belzubu other 8 directions monster project umbrella_9: 919711540
+      Belzubu 8 directions Horizontal changed monster project umbrella_0: 831449379
+      Belzubu 8 directions Horizontal changed monster project umbrella_1: 1946807341
+      Belzubu 8 directions Horizontal changed monster project umbrella_10: 1776259800
+      Belzubu 8 directions Horizontal changed monster project umbrella_11: -1556534996
+      Belzubu 8 directions Horizontal changed monster project umbrella_12: -1462151101
+      Belzubu 8 directions Horizontal changed monster project umbrella_13: -945605633
+      Belzubu 8 directions Horizontal changed monster project umbrella_14: -1492998399
+      Belzubu 8 directions Horizontal changed monster project umbrella_15: -119825353
+      Belzubu 8 directions Horizontal changed monster project umbrella_16: 339010559
+      Belzubu 8 directions Horizontal changed monster project umbrella_17: -1046619308
+      Belzubu 8 directions Horizontal changed monster project umbrella_18: 851374151
+      Belzubu 8 directions Horizontal changed monster project umbrella_19: 1875925398
+      Belzubu 8 directions Horizontal changed monster project umbrella_2: -1438546279
+      Belzubu 8 directions Horizontal changed monster project umbrella_3: -431660321
+      Belzubu 8 directions Horizontal changed monster project umbrella_4: -1014284507
+      Belzubu 8 directions Horizontal changed monster project umbrella_5: -309416485
+      Belzubu 8 directions Horizontal changed monster project umbrella_6: -2138264981
+      Belzubu 8 directions Horizontal changed monster project umbrella_7: 466258104
+      Belzubu 8 directions Horizontal changed monster project umbrella_8: 1689215865
+      Belzubu 8 directions Horizontal changed monster project umbrella_9: -273566450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
