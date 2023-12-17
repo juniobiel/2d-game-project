@@ -5,8 +5,15 @@ public class EventManagerInteractableObjects : MonoBehaviour
     private bool ActiveInteraction;
     private GameObject InteractableGameObject;
 
+    [SerializeField]
+    private GameObject InteractionPrompt;
+
+    [SerializeField]
+    private GameObject _canvas;
+
     private void Awake()
     {
+        _canvas = GameObject.FindAnyObjectByType<Canvas>().gameObject;
         ActiveInteraction = false;
     }
 
@@ -25,5 +32,11 @@ public class EventManagerInteractableObjects : MonoBehaviour
 
         InteractableGameObject = interactableObject;
         Debug.Log($"Objeto selecionado foi: {InteractableGameObject.name}");
+        OpenInteractionPrompt();
+    }
+
+    private void OpenInteractionPrompt()
+    {
+        Instantiate(InteractionPrompt, _canvas.transform);
     }
 }

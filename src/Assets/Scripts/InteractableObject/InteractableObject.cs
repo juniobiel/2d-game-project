@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    private const string INTERACTABLE_TAG = "InteractableObject";
+
     private TouchManager _touchManager;
     private Camera _mainCamera;
+    
+    [SerializeField]
+    private Transform _playerTransform;
+    
+    [SerializeField]
+    private Sprite NormalSprite;
+    [SerializeField]
+    private Sprite OutlineSprite;
+    private SpriteRenderer _spriteRenderer;
+
+    private bool IsActive = false;
+    [SerializeField]
+    private float InteractionDistanceActivation;
 
     public static event Action<GameObject> OnInteractableItemPressed;
 
@@ -13,12 +28,34 @@ public class InteractableObject : MonoBehaviour
     {
         _touchManager = TouchManager.Instance;
         _mainCamera = Camera.main;
+        _playerTransform = GameObject.FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
     {
         _touchManager.OnTouchPressed += TouchPressedInteractableObject;
     }
+
+    private void FixedUpdate()
+    {
+        if (DistanceVerify(InteractionDistanceActivation) && !IsActive)
+        {
+            IsActive = true;
+
+            _spriteRenderer.sprite = OutlineSprite;
+        }
+        else if(!DistanceVerify(InteractionDistanceActivation))
+        {
+            IsActive = false;
+
+            _spriteRenderer.sprite = NormalSprite;
+        }
+        
+    }
+
+    private bool DistanceVerify(float distance) => Vector2.Distance(_playerTransform.position, gameObject.transform.position) <= distance;
+    
 
     private void TouchPressedInteractableObject( Vector2 screenPosition )
     {
@@ -33,7 +70,7 @@ public class InteractableObject : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.tag.Equals("InteractableObject"))
+            if (hit.transform.CompareTag(INTERACTABLE_TAG) && IsActive)
             {
                 Debug.Log("Tocou em um objeto interativo");
                 OnInteractableItemPressed(hit.transform.gameObject);
