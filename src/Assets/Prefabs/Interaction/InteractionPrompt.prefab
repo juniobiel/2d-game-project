@@ -223,6 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 963959674798181002}
+  - component: {fileID: 2897128537575313594}
   m_Layer: 5
   m_Name: InteractionPrompt
   m_TagString: Untagged
@@ -250,6 +251,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 650, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2897128537575313594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881133563462898127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8950a71b7b9f9e94a875e346d633d40a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6105553756936795769
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +383,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2002384459360648240}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2897128537575313594}
+        m_TargetAssemblyTypeName: InteractionPrompt, Assembly-CSharp
+        m_MethodName: OnClickNoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6469788219645815982
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,4 +784,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1137044873917426068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2897128537575313594}
+        m_TargetAssemblyTypeName: InteractionPrompt, Assembly-CSharp
+        m_MethodName: OnClickYesButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
