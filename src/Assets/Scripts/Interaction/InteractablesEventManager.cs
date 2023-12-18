@@ -1,12 +1,14 @@
+using Assets.Scripts.Helpers;
 using UnityEngine;
 
-public class EventManagerInteractableObjects : MonoBehaviour
+public class InteractablesEventManager : Singleton<InteractablesEventManager>
 {
     private bool ActiveInteraction;
     private GameObject InteractableGameObject;
 
     [SerializeField]
     private GameObject InteractionPrompt;
+    public static GameObject InteractableInstantiated;
 
     [SerializeField]
     private GameObject _canvas;
@@ -37,6 +39,23 @@ public class EventManagerInteractableObjects : MonoBehaviour
 
     private void OpenInteractionPrompt()
     {
-        Instantiate(InteractionPrompt, _canvas.transform);
+        InteractableInstantiated = Instantiate(InteractionPrompt, _canvas.transform);
     }
+
+    public void SetActiveInteraction(bool active)
+    {
+        ActiveInteraction = active;
+    }
+
+    public void StartInteraction()
+    {
+        //Ativar a interface
+        //Passar o texto parametrizado (Scriptable Object)
+
+
+        //Ativar o objeto coletável
+        //Chave Coletada.
+        ActiveInteraction = false;
+    }
+    
 }
