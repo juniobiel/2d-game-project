@@ -56,3 +56,6 @@ TagManager:
   - name: Level Point
     uniqueID: 796154195
     locked: 0
+  - name: Clues
+    uniqueID: 544889411
+    locked: 0
