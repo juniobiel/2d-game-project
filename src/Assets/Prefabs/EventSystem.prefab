@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8804266895578242342}
   - component: {fileID: 6681498802191727859}
   - component: {fileID: 3253952828577624437}
+  - component: {fileID: 8995819317944628333}
+  - component: {fileID: 3677199918041888482}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -78,3 +80,29 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &8995819317944628333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6802128285334696893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f4f2fd393ebbb419e09033bde7989c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionPrompt: {fileID: 4881133563462898127, guid: 33affea9a0cd0564ead7274342de7339, type: 3}
+  _canvas: {fileID: 0}
+--- !u!114 &3677199918041888482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6802128285334696893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db0f974126f42c4dbe461a12f020770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
