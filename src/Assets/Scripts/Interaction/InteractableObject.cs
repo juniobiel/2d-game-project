@@ -11,14 +11,14 @@ public class InteractableObject : MonoBehaviour
     
     [SerializeField]
     private Transform _playerTransform;
-    
+
     [SerializeField]
-    private Sprite NormalSprite;
-    [SerializeField]
-    private Sprite OutlineSprite;
-    private SpriteRenderer _spriteRenderer;
+    private GameObject InteractionIcon;
+
+    private GameObject InteractionIconInstance;
 
     private bool IsActive = false;
+
     [SerializeField]
     private float InteractionDistanceActivation;
 
@@ -29,7 +29,6 @@ public class InteractableObject : MonoBehaviour
         _touchManager = TouchManager.Instance;
         _mainCamera = Camera.main;
         _playerTransform = GameObject.FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -42,16 +41,28 @@ public class InteractableObject : MonoBehaviour
         if (DistanceVerify(InteractionDistanceActivation) && !IsActive)
         {
             IsActive = true;
-
-            _spriteRenderer.sprite = OutlineSprite;
+            InstantiateInteractionIcon();
         }
         else if(!DistanceVerify(InteractionDistanceActivation))
         {
             IsActive = false;
-
-            _spriteRenderer.sprite = NormalSprite;
+            DestroyInteractionIcon();
         }
-        
+
+    }
+
+    private void DestroyInteractionIcon()
+    {
+        Destroy(InteractionIconInstance);
+        InteractionIconInstance = null;
+    }
+
+    private void InstantiateInteractionIcon()
+    {
+        InteractionIconInstance = Instantiate(InteractionIcon, gameObject.transform);
+        InteractionIconInstance.transform.localScale = Vector3.one;
+        InteractionIconInstance.transform.position = Vector3.zero;
+        InteractionIconInstance.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     private bool DistanceVerify(float distance) => Vector2.Distance(_playerTransform.position, gameObject.transform.position) <= distance;
