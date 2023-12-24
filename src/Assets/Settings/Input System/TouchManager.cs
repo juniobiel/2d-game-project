@@ -13,11 +13,15 @@ namespace Assets.Settings.InputSystem
         private InputAction _touchPositionAction;
         private InputAction _touchPressAction;
 
-        public delegate void TouchPressedEvent( Vector2 position );
+        public delegate void TouchPressedPositionEvent( Vector2 position );
+        public event TouchPressedPositionEvent OnTouchPositionPressed;
+
+        public delegate void TouchPressedEvent();
         public event TouchPressedEvent OnTouchPressed;
 
-        public delegate void TouchReleasedEvent( Vector2 position );
-        public event TouchReleasedEvent OnTouchReleased;
+
+        public delegate void TouchPositionReleasedEvent( Vector2 position );
+        public event TouchPositionReleasedEvent OnTouchReleased;
 
         private void Awake()
         {
@@ -28,28 +32,28 @@ namespace Assets.Settings.InputSystem
 
         private void OnEnable()
         {
-            _touchPositionAction.performed += TouchPressed;
+            _touchPositionAction.performed += TouchPressedPosition;
+            _touchPressAction.performed += TouchPressed;
         }
 
         private void OnDisable()
         {
-            _touchPositionAction.canceled -= TouchReleased;
+            _touchPositionAction.canceled -= TouchPositionReleased;
         }
 
         private void TouchPressed( InputAction.CallbackContext context )
         {
-            if ( OnTouchPressed != null)
-            {
-                OnTouchPressed(context.ReadValue<Vector2>());
-            }
+            OnTouchPressed?.Invoke();
         }
 
-        private void TouchReleased(InputAction.CallbackContext context )
+        private void TouchPressedPosition( InputAction.CallbackContext context )
         {
-            if (OnTouchReleased != null)
-            {
-                OnTouchReleased(context.ReadValue<Vector2>());
-            }
+            OnTouchPositionPressed?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        private void TouchPositionReleased(InputAction.CallbackContext context )
+        {
+            OnTouchReleased?.Invoke(context.ReadValue<Vector2>());
         }
     }
 }

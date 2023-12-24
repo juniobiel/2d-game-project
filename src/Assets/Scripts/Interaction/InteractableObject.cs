@@ -17,6 +17,9 @@ public class InteractableObject : MonoBehaviour
 
     private GameObject InteractionIconInstance;
 
+    
+    public InteractionObjectSO InteractableObjectSO;
+
     private bool IsActive = false;
 
     [SerializeField]
@@ -33,7 +36,7 @@ public class InteractableObject : MonoBehaviour
 
     private void OnEnable()
     {
-        _touchManager.OnTouchPressed += TouchPressedInteractableObject;
+        _touchManager.OnTouchPositionPressed += TouchPressedInteractableObject;
     }
 
     private void FixedUpdate()
@@ -61,8 +64,7 @@ public class InteractableObject : MonoBehaviour
     {
         InteractionIconInstance = Instantiate(InteractionIcon, gameObject.transform);
         InteractionIconInstance.transform.localScale = Vector3.one;
-        InteractionIconInstance.transform.position = Vector3.zero;
-        InteractionIconInstance.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        InteractionIconInstance.transform.SetPositionAndRotation(Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
     }
 
     private bool DistanceVerify(float distance) => Vector2.Distance(_playerTransform.position, gameObject.transform.position) <= distance;
@@ -81,11 +83,18 @@ public class InteractableObject : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.CompareTag(INTERACTABLE_TAG) && IsActive)
+            if (VerifyTouchObject(ref hit))
             {
                 Debug.Log("Tocou em um objeto interativo");
                 OnInteractableItemPressed(hit.transform.gameObject);
             }
         }
+    }
+
+    private bool VerifyTouchObject( ref RaycastHit hit )
+    {
+        return hit.transform.CompareTag(INTERACTABLE_TAG) 
+            && IsActive 
+            && hit.transform.gameObject.name.Equals(gameObject.name);
     }
 }
