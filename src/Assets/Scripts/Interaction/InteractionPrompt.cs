@@ -17,6 +17,6 @@ public class InteractionPrompt : MonoBehaviour
     public void OnClickNoButton()
     {
         Destroy(InteractionManager.InteractionPromptInstantiated);
-        _interactionManager.SetActiveInteraction(false);
+        _interactionManager.BtnResetInteraction();
     }
 }

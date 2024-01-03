@@ -22,10 +22,12 @@ public class InteractionManager : EventManagerBase
     private GameObject PanelTextInstantiated;
     private TextAnimation TextAnimationObject;
 
+
     private void Awake()
     {
         _canvas = FindAnyObjectByType<Canvas>().gameObject;
         _touchManager = TouchManager.Instance;
+        _joyStick = GameObject.FindWithTag(JOYSTICK_TAG);
 
         ActiveInteraction = false;
         TextCompleted = false;
@@ -52,6 +54,7 @@ public class InteractionManager : EventManagerBase
 
     private void OpenPanelText()
     {
+        _joyStick.SetActive( false );
         InstantiatePanelText();
     }
 
@@ -91,10 +94,11 @@ public class InteractionManager : EventManagerBase
         InteractionPromptInstantiated = Instantiate(InteractionPrompt, _canvas.transform);
     }
 
-    public void SetActiveInteraction( bool active )
+    public void BtnResetInteraction()
     {
-        ActiveInteraction = active;
+        ActiveInteraction = false;
         TextCompleted = false;
+        _joyStick.SetActive(true );
     }
 
     public void StartInteraction()
