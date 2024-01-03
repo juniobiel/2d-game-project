@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1f76eb8fdec894ab2673381a2b9c4a, type: 3}
   m_Name: Quadro
   m_EditorClassIdentifier: 
-  InitialPhrase: Um quadro religioso rasgado, aparenta estar levemente solto
+  InitialPhrase: "Uau, olha esse quadro! As cores s\xE3o bonitas, mas sinto algo
+    estranho olhando para ele. Parece que tem algo diferente, mas n\xE3o sei bem
+    o qu\xEA."
