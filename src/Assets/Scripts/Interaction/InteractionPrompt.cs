@@ -2,22 +2,21 @@ using UnityEngine;
 
 public class InteractionPrompt : MonoBehaviour
 {
-    private InteractablesEventManager _eventManager;
-    
+    private InteractionManager _interactionManager;
 
     private void Awake()
     {
-        _eventManager = InteractablesEventManager.Instance;
+        _interactionManager = FindAnyObjectByType<InteractionManager>();
     }
     public void OnClickYesButton()
     {
-        Destroy(InteractablesEventManager.InteractableInstantiated);
-        _eventManager.StartInteraction();
+        Destroy(InteractionManager.InteractionPromptInstantiated);
+        _interactionManager.StartInteraction();
     }
 
     public void OnClickNoButton()
     {
-        Destroy(InteractablesEventManager.InteractableInstantiated);
-        _eventManager.SetActiveInteraction(false);
+        Destroy(InteractionManager.InteractionPromptInstantiated);
+        _interactionManager.BtnResetInteraction();
     }
 }

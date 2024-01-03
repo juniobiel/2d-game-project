@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - LevelPoint
   - InteractableObject
+  - JoyStick
   layers:
   - Default
   - TransparentFX

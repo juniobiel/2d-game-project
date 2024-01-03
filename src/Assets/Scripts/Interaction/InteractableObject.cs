@@ -39,6 +39,11 @@ public class InteractableObject : MonoBehaviour
         _touchManager.OnTouchPositionPressed += TouchPressedInteractableObject;
     }
 
+    private void OnDisable()
+    {
+        _touchManager.OnTouchPositionPressed -= TouchPressedInteractableObject;
+    }
+
     private void FixedUpdate()
     {
         if (DistanceVerify(InteractionDistanceActivation) && !IsActive)
@@ -68,7 +73,6 @@ public class InteractableObject : MonoBehaviour
     }
 
     private bool DistanceVerify(float distance) => Vector2.Distance(_playerTransform.position, gameObject.transform.position) <= distance;
-    
 
     private void TouchPressedInteractableObject( Vector2 screenPosition )
     {
@@ -85,7 +89,6 @@ public class InteractableObject : MonoBehaviour
         {
             if (VerifyTouchObject(ref hit))
             {
-                Debug.Log("Tocou em um objeto interativo");
                 OnInteractableItemPressed(hit.transform.gameObject);
             }
         }
