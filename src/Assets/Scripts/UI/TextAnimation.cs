@@ -19,19 +19,29 @@ public class TextAnimation : MonoBehaviour
     private float TimingCounter;
     private int i;
     private bool HasAnimationCompleted;
-
+    private bool HasAnimationStarted;
     public static event Action OnTextAnimationCompleted;
 
 
     private void Awake()
     {
+        InteractionManager.SkipTextAnimation += InteractionManager_SkipTextAnimation;
+
         _text = GetComponent<TMP_Text>();
         _text.text = string.Empty;
         TimingCounter = 0;
         i = 0;
         HasAnimationCompleted = false;
+        HasAnimationStarted = false;
     }
 
+    private void InteractionManager_SkipTextAnimation()
+    {
+        if (HasAnimationStarted && !HasAnimationCompleted)
+        {
+            _text.text = TextToWrite;
+        }
+    }
 
     private void Update()
     {
@@ -48,16 +58,22 @@ public class TextAnimation : MonoBehaviour
         {
             if (!VerifyTextHasCompletedWrite())
             {
+                HasAnimationStarted = true;
                 _text.text += TextToWrite[i].ToString();
                 i++;
                 TimingCounter -= TimingCounter;
             }
             else
-            {
-                HasAnimationCompleted = true;
-                OnTextAnimationCompleted();
-            }
+                CompleteAnimation();
+            
         }
+    }
+
+    private void CompleteAnimation()
+    {
+        HasAnimationStarted = false;
+        HasAnimationCompleted = true;
+        OnTextAnimationCompleted();
     }
 
     private bool VerifyTextHasCompletedWrite()

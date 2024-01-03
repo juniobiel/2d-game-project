@@ -2,6 +2,7 @@ using Assets.Scripts.Helpers;
 using System.Drawing.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace Assets.Settings.InputSystem
 {
@@ -16,9 +17,8 @@ namespace Assets.Settings.InputSystem
         public delegate void TouchPressedPositionEvent( Vector2 position );
         public event TouchPressedPositionEvent OnTouchPositionPressed;
 
-        public delegate void TouchPressedEvent();
+        public delegate void TouchPressedEvent( CallbackContext context );
         public event TouchPressedEvent OnTouchPressed;
-
 
         public delegate void TouchPositionReleasedEvent( Vector2 position );
         public event TouchPositionReleasedEvent OnTouchReleased;
@@ -43,7 +43,7 @@ namespace Assets.Settings.InputSystem
 
         private void TouchPressed( InputAction.CallbackContext context )
         {
-            OnTouchPressed?.Invoke();
+            OnTouchPressed?.Invoke(context);
         }
 
         private void TouchPressedPosition( InputAction.CallbackContext context )
