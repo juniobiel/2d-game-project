@@ -8,12 +8,20 @@ public class InteractionManager : EventManagerBase
 {
     private bool ActiveInteraction;
     private GameObject InteractableGameObject;
+    private InteractableObject _interactableObject;
+    private InteractionObjectSO InteractableSO;
+    private SpriteRenderer GOSpriteRenderer;
 
     [SerializeField]
     private GameObject InteractionPrompt;
     public static GameObject InteractionPromptInstantiated;
+    private bool HasInteractionDone;
+
+    [SerializeField]
+    private GameObject BrokenFrameObject;
 
     public static event Action SkipTextAnimation;
+    public static event Action<string> OnInteractionItemCollected;
 
     private bool TextCompleted;
 
@@ -21,7 +29,7 @@ public class InteractionManager : EventManagerBase
     public GameObject _panelText;
     private GameObject PanelTextInstantiated;
     private TextAnimation TextAnimationObject;
-
+    private string TextToWrite;
 
     private void Awake()
     {
@@ -31,13 +39,34 @@ public class InteractionManager : EventManagerBase
 
         ActiveInteraction = false;
         TextCompleted = false;
+        HasInteractionDone = false;
     }
 
     private void OnEnable()
     {
         _touchManager.OnTouchPressed += TouchPressedValidation;
         InteractableObject.OnInteractableItemPressed += InteractableObject_OnInteractableItemPressed; ;
-        TextAnimation.OnTextAnimationCompleted += TextAnimationCompleted;
+        TextAnimation.OnTextWritterAnimationCompleted += TextAnimation_OnTextWritterAnimationCompleted;
+        TextAnimation.OnTextFlickerAnimationCompleted += TextAnimation_OnTextFlickerAnimationCompleted;
+    }
+
+    private void TextAnimation_OnTextWritterAnimationCompleted()
+    {
+        TextCompleted = true;
+    }
+
+    private void TextAnimation_OnTextFlickerAnimationCompleted()
+    {
+        Destroy(InteractableGameObject);
+        ActiveInteraction = false;
+        _joyStick.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        _touchManager.OnTouchPressed -= TouchPressedValidation;
+        InteractableObject.OnInteractableItemPressed -= InteractableObject_OnInteractableItemPressed; ;
+        TextAnimation.OnTextWritterAnimationCompleted -= TextAnimation_OnTextWritterAnimationCompleted;
     }
 
     private void InteractableObject_OnInteractableItemPressed( GameObject interactableObject )
@@ -49,12 +78,71 @@ public class InteractionManager : EventManagerBase
             ActiveInteraction = true;
 
         InteractableGameObject = interactableObject;
-        OpenPanelText();
+        InteractableSO = InteractableGameObject.GetComponent<InteractableObject>().InteractableObjectSO;
+        GOSpriteRenderer = interactableObject.GetComponent<SpriteRenderer>();
+        _interactableObject = interactableObject.GetComponent<InteractableObject>();
+
+        OpenPanelText(InteractableSO.InitialPhrase);
     }
 
-    private void OpenPanelText()
+    private void TouchPressedValidation( CallbackContext context )
+    {
+        if (!TextCompleted && PanelTextInstantiated)
+            SkipTextAnimation();
+
+        if (TextCompleted && InteractionPromptInstantiated == null && !HasInteractionDone)
+        {
+            DestroyPanelText();
+            OpenInteractionPrompt();
+        }
+
+        if (TextCompleted && HasInteractionDone)
+        {
+            DestroyPanelText();
+            ActiveInteraction = false;
+            TextCompleted = false;
+
+            GOSpriteRenderer.sprite = InteractableSO.InteractionSprites[0];
+
+            ActiveBrokenFrameObject();
+
+            OnInteractionItemCollected(VerifyItemCollected());           
+        }
+    }
+
+    private string VerifyItemCollected()
+    {
+        switch (InteractableSO.CollectableItem)
+        {
+            case CollectableItem.Key:
+                return "UMA CHAVE FOI COLETADA!";
+            case CollectableItem.Umbrella:
+                return "UM GUARDA-CHUVAS FOI COLETADO!";
+            case CollectableItem.Password:
+                return "UMA SENHA FOI COLETADA!";
+            default:
+                return "UM ITEM FOI COLETADO!";
+        }
+
+    }
+
+    public void StartInteraction()
+    {
+        _interactableObject.SetInteractionComplete();
+        HasInteractionDone = true;
+
+        OpenPanelText(InteractableSO.InteractionMessage);
+    }
+
+    private void ActiveBrokenFrameObject()
+    {
+        BrokenFrameObject.SetActive(true);
+    }
+
+    private void OpenPanelText(string textToWrite)
     {
         _joyStick.SetActive( false );
+        TextToWrite = textToWrite;
         InstantiatePanelText();
     }
 
@@ -62,12 +150,7 @@ public class InteractionManager : EventManagerBase
     {
         PanelTextInstantiated = Instantiate(_panelText, _canvas.transform);
         TextAnimationObject = PanelTextInstantiated.GetComponentInChildren<TextAnimation>(true);
-        TextAnimationObject.TextToWrite = InteractableGameObject.GetComponent<InteractableObject>().InteractableObjectSO.InitialPhrase;
-    }
-
-    private void TextAnimationCompleted()
-    {
-        TextCompleted = true;
+        TextAnimationObject.TextToWrite = TextToWrite;
     }
 
     private void DestroyPanelText()
@@ -75,20 +158,7 @@ public class InteractionManager : EventManagerBase
         Destroy(PanelTextInstantiated);
         PanelTextInstantiated = null;
     }
-
-
-    private void TouchPressedValidation( CallbackContext context )
-    {
-        if (!TextCompleted && PanelTextInstantiated)
-            SkipTextAnimation();
-
-        if (TextCompleted && InteractionPromptInstantiated == null)
-        {
-            DestroyPanelText();
-            OpenInteractionPrompt();
-        }
-    }
-
+    
     private void OpenInteractionPrompt()
     {
         InteractionPromptInstantiated = Instantiate(InteractionPrompt, _canvas.transform);
@@ -101,16 +171,6 @@ public class InteractionManager : EventManagerBase
         _joyStick.SetActive(true );
     }
 
-    public void StartInteraction()
-    {
-        //Ativar a interface
-        //Passar o texto parametrizado (Scriptable Object)
 
-
-        //Ativar o objeto coletável
-        //Chave Coletada.
-        ActiveInteraction = false;
-        TextCompleted = false;
-    }
 }
 

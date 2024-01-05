@@ -15,3 +15,8 @@ MonoBehaviour:
   InitialPhrase: "Uau, olha esse quadro! As cores s\xE3o bonitas, mas sinto algo
     estranho olhando para ele. Parece que tem algo diferente, mas n\xE3o sei bem
     o qu\xEA."
+  InteractionMessage: "O quadro balan\xE7a at\xE9 cair no ch\xE3o se despeda\xE7ando,
+    voc\xEA n\xE3o se sente mais desconfort\xE1vel"
+  InteractionSprites:
+  - {fileID: 8129583353321811537, guid: 54b5b6ee93b2ec646b4d9a3c1a5e116d, type: 3}
+  - {fileID: 5145716342726869300, guid: d8c35920e9f53e24486e075ffbd0eac9, type: 3}
