@@ -1,4 +1,5 @@
 using Assets.Settings.InputSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : EventManagerBase
@@ -35,10 +36,10 @@ public class UIManager : EventManagerBase
         HUDInstantiated = null;
     }
 
-    private void InteractionManager_OnInteractionItemCollected( string text )
+    private void InteractionManager_OnInteractionItemCollected( IEnumerable<string> texts )
     {
         HUDInstantiated = Instantiate( HUDCollectedItem, _canvas.transform);
         _textAnimationScript = HUDInstantiated.GetComponent<TextAnimation>();
-        _textAnimationScript.TextToWrite = text;
+        _textAnimationScript.TextToWrite = texts;
     }
 }

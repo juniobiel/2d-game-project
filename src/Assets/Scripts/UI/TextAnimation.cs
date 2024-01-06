@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -15,7 +17,7 @@ public class TextAnimation : MonoBehaviour
 
     public AnimationTextType AnimationType;
 
-    public string TextToWrite;
+    public IEnumerable<string> TextToWrite;
 
     public float FlickerTime;
     public int FlickerTimes;
@@ -26,6 +28,9 @@ public class TextAnimation : MonoBehaviour
     private int i;
     private bool HasAnimationCompleted;
     private bool HasAnimationStarted;
+    private int LinesToWrite;
+    private int Line;
+    private bool CanAnimate;
 
     public static event Action OnTextWritterAnimationCompleted;
 
@@ -34,48 +39,53 @@ public class TextAnimation : MonoBehaviour
 
     private void Awake()
     {
+        _text = GetComponent<TMP_Text>();
+    }
+
+    private void OnEnable()
+    {
         InteractionManager.SkipTextAnimation += InteractionManager_SkipTextAnimation;
 
-        _text = GetComponent<TMP_Text>();
         _text.text = string.Empty;
         TimingCounter = 0;
         i = 0;
+        LinesToWrite = 0;
+        Line = 0;
+        CanAnimate = true;
         HasAnimationCompleted = false;
         HasAnimationStarted = false;
         FlickerCounter = FlickerTimes;
     }
 
-    private void InteractionManager_SkipTextAnimation()
+    private void OnDisable()
     {
-        if (HasAnimationStarted && !HasAnimationCompleted && AnimationTextType.Writter.Equals(AnimationType))
-            _text.text = TextToWrite;
-        
+        InteractionManager.SkipTextAnimation -= InteractionManager_SkipTextAnimation;
     }
 
     private void Update()
     {
         TimingCounter += Time.deltaTime;
 
-        if(AnimationType.Equals(AnimationTextType.Writter) && !HasAnimationCompleted)
+        if(AnimationType.Equals(AnimationTextType.Writter) && !HasAnimationCompleted && CanAnimate)
             WriteTextWithTiming(0.1f);
 
 
         if (AnimationType.Equals(AnimationTextType.Flicker) && !HasAnimationCompleted)
-            FlickerAnimation(FlickerTime, FlickerTimes);        
+            FlickerAnimation(FlickerTime);        
     }
 
-    private void FlickerAnimation(float time, int flickerTimes)
+    private void FlickerAnimation( float time )
     {
-        
-        if( TimingCounter >= time)
+
+        if (TimingCounter >= time)
         {
-            if(_text.text.Equals(TextToWrite))
+            if (_text.text.Equals(TextToWrite.First()))
             {
                 _text.text = string.Empty;
             }
             else
             {
-                _text.text = TextToWrite;
+                _text.text = TextToWrite.First();
                 FlickerCounter--;
             }
 
@@ -90,20 +100,50 @@ public class TextAnimation : MonoBehaviour
         }
     }
 
+    private void InteractionManager_SkipTextAnimation()
+    {
+        LinesToWrite = TextToWrite.Count();
+
+        if (VerifyTextHasCompletedWrite())
+        {
+            if (Line == LinesToWrite - 1)
+                CompleteAnimation();
+            else
+            {
+                _text.text = string.Empty;
+                Line++;
+                i = 0;
+                CanAnimate = true;
+            }
+        }
+        else
+        {
+            if (HasAnimationStarted && !HasAnimationCompleted)
+            {
+                _text.text = TextToWrite.ElementAt(Line);
+            }
+        }
+    }
+
+    
+
     private void WriteTextWithTiming(float time)
     {
+        LinesToWrite = TextToWrite.Count();
+
         if (TimingCounter >= time)
         {
             if (!VerifyTextHasCompletedWrite())
             {
                 HasAnimationStarted = true;
-                _text.text += TextToWrite[i].ToString();
+                _text.text += TextToWrite.ElementAt(Line)[i].ToString();
                 i++;
                 TimingCounter -= TimingCounter;
             }
             else
-                CompleteAnimation();
-            
+            {
+                CanAnimate = false;
+            }
         }
     }
 
@@ -111,12 +151,13 @@ public class TextAnimation : MonoBehaviour
     {
         HasAnimationStarted = false;
         HasAnimationCompleted = true;
+        CanAnimate = false;
         OnTextWritterAnimationCompleted();
     }
 
     private bool VerifyTextHasCompletedWrite()
     {
-        return _text.text.Equals(TextToWrite);
+        return _text.text.Equals(TextToWrite.ElementAt(Line));
     }
 }
 

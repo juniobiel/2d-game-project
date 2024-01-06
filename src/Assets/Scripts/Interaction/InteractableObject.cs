@@ -1,6 +1,5 @@
 using Assets.Settings.InputSystem;
 using System;
-using System.Security.Policy;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour

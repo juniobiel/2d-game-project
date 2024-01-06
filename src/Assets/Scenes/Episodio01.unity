@@ -507,7 +507,6 @@ GameObject:
   m_Component:
   - component: {fileID: 103191972}
   - component: {fileID: 103191971}
-  - component: {fileID: 103191974}
   - component: {fileID: 103191973}
   m_Layer: 0
   m_Name: URSINHO
@@ -604,22 +603,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2974382, y: 0.22231188, z: 0.19999996}
   m_Center: {x: 0.0022445999, y: -0.0012002799, z: 0}
---- !u!114 &103191974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103191970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4880017cac19a449777ff786438dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  InteractionIcon: {fileID: 8183534411888900098, guid: 4a249528cce842a4387c241ddfd5e5d0, type: 3}
-  InteractableObjectSO: {fileID: 0}
-  InteractionDistanceActivation: 1
 --- !u!1 &141102691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2355,6 @@ GameObject:
   m_Component:
   - component: {fileID: 851049640}
   - component: {fileID: 851049639}
-  - component: {fileID: 851049641}
   - component: {fileID: 851049642}
   m_Layer: 0
   m_Name: Porta_Corredor
@@ -2449,22 +2431,6 @@ Transform:
   - {fileID: 41339986}
   m_Father: {fileID: 198978389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &851049641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851049638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4880017cac19a449777ff786438dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  InteractionIcon: {fileID: 8183534411888900098, guid: 4a249528cce842a4387c241ddfd5e5d0, type: 3}
-  InteractableObjectSO: {fileID: 0}
-  InteractionDistanceActivation: 1
 --- !u!65 &851049642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4073,7 +4039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 0}
   InteractionIcon: {fileID: 8183534411888900098, guid: 4a249528cce842a4387c241ddfd5e5d0, type: 3}
-  InteractableObjectSO: {fileID: 0}
+  InteractableObjectSO: {fileID: 11400000, guid: b619e569da2e6c546a12f3e02a216f85, type: 2}
   InteractionDistanceActivation: 1
 --- !u!65 &954926101
 BoxCollider:
@@ -4888,7 +4854,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1148310933}
   - component: {fileID: 1148310932}
-  - component: {fileID: 1148310935}
   - component: {fileID: 1148310934}
   m_Layer: 0
   m_Name: BED
@@ -4986,22 +4951,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.51872987, y: 0.73090255, z: 0.2}
   m_Center: {x: 0.0051750406, y: -0.025874566, z: 0}
---- !u!114 &1148310935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148310931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4880017cac19a449777ff786438dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  InteractionIcon: {fileID: 8183534411888900098, guid: 4a249528cce842a4387c241ddfd5e5d0, type: 3}
-  InteractableObjectSO: {fileID: 0}
-  InteractionDistanceActivation: 1.5
 --- !u!1 &1220881195
 GameObject:
   m_ObjectHideFlags: 0
@@ -5848,8 +5797,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.08669996, y: -0.0065000057, z: 0}
-    m_Extent: {x: 1.4936, y: 1.0287, z: 0}
+    m_Center: {x: -0.076600015, y: -0.00069999695, z: 0}
+    m_Extent: {x: 1.4881, y: 1.0307, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5889,7 +5838,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1590960234}
   - component: {fileID: 1590960233}
-  - component: {fileID: 1590960236}
   - component: {fileID: 1590960235}
   m_Layer: 0
   m_Name: ESTATUA_ANJO
@@ -5987,22 +5935,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29585618, y: 0.5670296, z: 0.2}
   m_Center: {x: 0.023927722, y: -0.09342945, z: 0}
---- !u!114 &1590960236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590960232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4880017cac19a449777ff786438dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  InteractionIcon: {fileID: 8183534411888900098, guid: 4a249528cce842a4387c241ddfd5e5d0, type: 3}
-  InteractableObjectSO: {fileID: 0}
-  InteractionDistanceActivation: 1.5
 --- !u!1001 &1714993633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6374,7 +6306,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1771991625}
   - component: {fileID: 1771991624}
-  - component: {fileID: 1771991627}
   - component: {fileID: 1771991628}
   m_Layer: 0
   m_Name: DESENHOS
@@ -6450,22 +6381,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 705275877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1771991627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771991623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4880017cac19a449777ff786438dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  InteractionIcon: {fileID: 8183534411888900098, guid: 4a249528cce842a4387c241ddfd5e5d0, type: 3}
-  InteractableObjectSO: {fileID: 0}
-  InteractionDistanceActivation: 2.5
 --- !u!65 &1771991628
 BoxCollider:
   m_ObjectHideFlags: 0
