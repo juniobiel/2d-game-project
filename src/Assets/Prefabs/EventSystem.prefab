@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 737039682040993659}
   - component: {fileID: 3771589973463265197}
   - component: {fileID: 5169357014838589714}
+  - component: {fileID: 4288591874385018545}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -92,4 +93,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionPrompt: {fileID: 4881133563462898127, guid: 33affea9a0cd0564ead7274342de7339, type: 3}
+  BrokenFrameObject: {fileID: 0}
   _panelText: {fileID: 2529089537933994310, guid: 9e52059f94927fc4f94c82bbf6cdd4e1, type: 3}
+--- !u!114 &4288591874385018545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3120124693420945842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c72cf28b81ab345aa15cf83358f1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDCollectedItem: {fileID: 1942599751223368354, guid: 869179ac6255d3d49bcd7416c43d6c9f, type: 3}

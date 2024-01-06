@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,4 +5,7 @@ using UnityEngine;
 public class InteractionObjectSO : ScriptableObject
 {
     public string InitialPhrase;
+    public string InteractionMessage;
+    public List<Sprite> InteractionSprites;
+    public CollectableItem CollectableItem;
 }

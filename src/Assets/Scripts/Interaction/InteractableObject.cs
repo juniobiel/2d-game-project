@@ -1,5 +1,6 @@
 using Assets.Settings.InputSystem;
 using System;
+using System.Security.Policy;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
@@ -21,17 +22,20 @@ public class InteractableObject : MonoBehaviour
     public InteractionObjectSO InteractableObjectSO;
 
     private bool IsActive = false;
+    private bool HasInteractionCompleted;
 
     [SerializeField]
     private float InteractionDistanceActivation;
 
     public static event Action<GameObject> OnInteractableItemPressed;
 
+
     private void Awake()
     {
         _touchManager = TouchManager.Instance;
         _mainCamera = Camera.main;
         _playerTransform = GameObject.FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        HasInteractionCompleted = false;
     }
 
     private void OnEnable()
@@ -46,15 +50,18 @@ public class InteractableObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (DistanceVerify(InteractionDistanceActivation) && !IsActive)
+        if(!HasInteractionCompleted)
         {
-            IsActive = true;
-            InstantiateInteractionIcon();
-        }
-        else if(!DistanceVerify(InteractionDistanceActivation))
-        {
-            IsActive = false;
-            DestroyInteractionIcon();
+            if (DistanceVerify(InteractionDistanceActivation) && !IsActive)
+            {
+                IsActive = true;
+                InstantiateInteractionIcon();
+            }
+            else if(!DistanceVerify(InteractionDistanceActivation))
+            {
+                IsActive = false;
+                DestroyInteractionIcon();
+            }
         }
 
     }
@@ -90,6 +97,7 @@ public class InteractableObject : MonoBehaviour
             if (VerifyTouchObject(ref hit))
             {
                 OnInteractableItemPressed(hit.transform.gameObject);
+                DestroyInteractionIcon();
             }
         }
     }
@@ -98,6 +106,12 @@ public class InteractableObject : MonoBehaviour
     {
         return hit.transform.CompareTag(INTERACTABLE_TAG) 
             && IsActive 
+            && !HasInteractionCompleted
             && hit.transform.gameObject.name.Equals(gameObject.name);
+    }
+
+    public void SetInteractionComplete()
+    {
+        HasInteractionCompleted = true;
     }
 }

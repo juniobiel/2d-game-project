@@ -5,7 +5,8 @@ using UnityEngine;
 
 public enum AnimationTextType
 {
-    Writter
+    Writter,
+    Flicker
 }
 
 public class TextAnimation : MonoBehaviour
@@ -16,11 +17,19 @@ public class TextAnimation : MonoBehaviour
 
     public string TextToWrite;
 
+    public float FlickerTime;
+    public int FlickerTimes;
+
+    private int FlickerCounter;
+
     private float TimingCounter;
     private int i;
     private bool HasAnimationCompleted;
     private bool HasAnimationStarted;
-    public static event Action OnTextAnimationCompleted;
+
+    public static event Action OnTextWritterAnimationCompleted;
+
+    public static event Action OnTextFlickerAnimationCompleted;
 
 
     private void Awake()
@@ -33,22 +42,51 @@ public class TextAnimation : MonoBehaviour
         i = 0;
         HasAnimationCompleted = false;
         HasAnimationStarted = false;
+        FlickerCounter = FlickerTimes;
     }
 
     private void InteractionManager_SkipTextAnimation()
     {
-        if (HasAnimationStarted && !HasAnimationCompleted)
-        {
+        if (HasAnimationStarted && !HasAnimationCompleted && AnimationTextType.Writter.Equals(AnimationType))
             _text.text = TextToWrite;
-        }
+        
     }
 
     private void Update()
     {
+        TimingCounter += Time.deltaTime;
+
         if(AnimationType.Equals(AnimationTextType.Writter) && !HasAnimationCompleted)
-        {
-            TimingCounter += Time.deltaTime;
             WriteTextWithTiming(0.1f);
+
+
+        if (AnimationType.Equals(AnimationTextType.Flicker) && !HasAnimationCompleted)
+            FlickerAnimation(FlickerTime, FlickerTimes);        
+    }
+
+    private void FlickerAnimation(float time, int flickerTimes)
+    {
+        
+        if( TimingCounter >= time)
+        {
+            if(_text.text.Equals(TextToWrite))
+            {
+                _text.text = string.Empty;
+            }
+            else
+            {
+                _text.text = TextToWrite;
+                FlickerCounter--;
+            }
+
+            if (FlickerCounter == -1)
+            {
+                HasAnimationCompleted = true;
+                _text.text = string.Empty;
+                OnTextFlickerAnimationCompleted();
+            }
+
+            TimingCounter -= TimingCounter;
         }
     }
 
@@ -73,7 +111,7 @@ public class TextAnimation : MonoBehaviour
     {
         HasAnimationStarted = false;
         HasAnimationCompleted = true;
-        OnTextAnimationCompleted();
+        OnTextWritterAnimationCompleted();
     }
 
     private bool VerifyTextHasCompletedWrite()
