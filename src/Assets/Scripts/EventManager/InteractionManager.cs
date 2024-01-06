@@ -1,5 +1,6 @@
 ﻿using Assets.Settings.InputSystem;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -15,13 +16,13 @@ public class InteractionManager : EventManagerBase
     [SerializeField]
     private GameObject InteractionPrompt;
     public static GameObject InteractionPromptInstantiated;
-    private bool HasInteractionDone;
+    private bool HasPromptInteractionDone;
 
     [SerializeField]
     private GameObject BrokenFrameObject;
 
     public static event Action SkipTextAnimation;
-    public static event Action<string> OnInteractionItemCollected;
+    public static event Action<IEnumerable<string>> OnInteractionItemCollected;
 
     private bool TextCompleted;
 
@@ -29,7 +30,7 @@ public class InteractionManager : EventManagerBase
     public GameObject _panelText;
     private GameObject PanelTextInstantiated;
     private TextAnimation TextAnimationObject;
-    private string TextToWrite;
+    private IEnumerable<string> TextToWrite;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class InteractionManager : EventManagerBase
 
         ActiveInteraction = false;
         TextCompleted = false;
-        HasInteractionDone = false;
+        HasPromptInteractionDone = false;
     }
 
     private void OnEnable()
@@ -50,14 +51,11 @@ public class InteractionManager : EventManagerBase
         TextAnimation.OnTextFlickerAnimationCompleted += TextAnimation_OnTextFlickerAnimationCompleted;
     }
 
-    private void TextAnimation_OnTextWritterAnimationCompleted()
-    {
-        TextCompleted = true;
-    }
-
     private void TextAnimation_OnTextFlickerAnimationCompleted()
     {
-        Destroy(InteractableGameObject);
+        if(IsFrameInteraction())
+            Destroy(InteractableGameObject);
+        
         ActiveInteraction = false;
         _joyStick.SetActive(true);
     }
@@ -90,38 +88,66 @@ public class InteractionManager : EventManagerBase
         if (!TextCompleted && PanelTextInstantiated)
             SkipTextAnimation();
 
-        if (TextCompleted && InteractionPromptInstantiated == null && !HasInteractionDone)
+        if (TextCompleted && InteractionPromptInstantiated == null && !HasPromptInteractionDone)
         {
             DestroyPanelText();
             OpenInteractionPrompt();
         }
 
-        if (TextCompleted && HasInteractionDone)
+        if (HasInteractionTextCompleted())
         {
             DestroyPanelText();
             ActiveInteraction = false;
             TextCompleted = false;
 
-            GOSpriteRenderer.sprite = InteractableSO.InteractionSprites[0];
+            if(IsFrameInteraction())
+            {
+                GOSpriteRenderer.sprite = InteractableSO.InteractionSprites[0];
 
-            ActiveBrokenFrameObject();
+                ActiveBrokenFrameObject();
 
-            OnInteractionItemCollected(VerifyItemCollected());           
+                OnInteractionItemCollected(VerifyItemCollected());
+            }
+
+            if(IsChestInteraction())
+            {
+                OnInteractionItemCollected(VerifyItemCollected());
+            }
         }
     }
 
-    private string VerifyItemCollected()
+    private bool HasInteractionTextCompleted()
+    {
+        return TextCompleted && HasPromptInteractionDone;
+    }
+
+    private bool IsFrameInteraction()
+    {
+        return InteractionItems.Frame.Equals(InteractableSO.ItemName);
+    }
+
+    private bool IsChestInteraction()
+    {
+        return InteractionItems.Chest.Equals(InteractableSO.ItemName);
+    }
+
+    private void TextAnimation_OnTextWritterAnimationCompleted()
+    {
+        TextCompleted = true;
+    }
+
+    private IEnumerable<string> VerifyItemCollected()
     {
         switch (InteractableSO.CollectableItem)
         {
             case CollectableItem.Key:
-                return "UMA CHAVE FOI COLETADA!";
+                return new List<string> { "UMA CHAVE FOI COLETADA!" };
             case CollectableItem.Umbrella:
-                return "UM GUARDA-CHUVAS FOI COLETADO!";
+                return new List<string> { "UM GUARDA-CHUVAS FOI COLETADO!" }; 
             case CollectableItem.Password:
-                return "UMA SENHA FOI COLETADA!";
+                return new List<string> { "UMA SENHA FOI COLETADA!" };
             default:
-                return "UM ITEM FOI COLETADO!";
+                return new List<string> { "UM ITEM FOI COLETADO!" };
         }
 
     }
@@ -129,7 +155,8 @@ public class InteractionManager : EventManagerBase
     public void StartInteraction()
     {
         _interactableObject.SetInteractionComplete();
-        HasInteractionDone = true;
+        HasPromptInteractionDone = true;
+        TextCompleted = false;
 
         OpenPanelText(InteractableSO.InteractionMessage);
     }
@@ -139,7 +166,7 @@ public class InteractionManager : EventManagerBase
         BrokenFrameObject.SetActive(true);
     }
 
-    private void OpenPanelText(string textToWrite)
+    private void OpenPanelText(IEnumerable<string> textToWrite)
     {
         _joyStick.SetActive( false );
         TextToWrite = textToWrite;

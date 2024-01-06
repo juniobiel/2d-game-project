@@ -148,6 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimationType: 1
-  TextToWrite: UMA CHAVE FOI COLETADA!
   FlickerTime: 0.8
   FlickerTimes: 3
