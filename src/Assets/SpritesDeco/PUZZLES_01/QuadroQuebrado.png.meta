@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      QuadroQuebrado_0: 5145716342726869300
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
