@@ -11,7 +11,7 @@ namespace Assets.Scripts.Helpers
             {
                 if(_instance == null)
                 {
-                    var objs = FindObjectsOfType(typeof(T)) as T[];
+                    var objs = FindObjectsByType(typeof(T), FindObjectsSortMode.None) as T[];
                     if(objs.Length > 0)
                         _instance = objs[0];
                     

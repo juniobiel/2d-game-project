@@ -28,7 +28,7 @@ namespace Assets.Scripts.LevelSelection
         /// </summary>
         private void OnEnable()
         {
-            _touchManager.OnTouchPressed += TouchPressedLevelPoint;
+            _touchManager.OnTouchPositionPressed += TouchPressedLevelPoint;
         }
 
         /// <summary>

@@ -82,5 +82,5 @@ ignore.conf
 # Android Keystore
 **.keystore
 
-# Arquivos de anotação
-*.txt
+# VS Code
+.vscode
